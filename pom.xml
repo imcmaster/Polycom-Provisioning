@@ -3,7 +3,7 @@
   <groupId>com.voxworx.polycom</groupId>
   <artifactId>Polycom-Provisioning</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <name>Polycom-Provisioning</name>
   <url>http://maven.apache.org</url>
 
