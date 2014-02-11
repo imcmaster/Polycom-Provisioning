@@ -15,8 +15,9 @@ import org.w3c.dom.Document;
 
 public class XmlUtils {
 	
-	public static String generateStringResult(Document dom) throws TransformerFactoryConfigurationError, TransformerException {
-		Transformer tr = generateTransformer();
+	public static String generateStringResult(Document dom, boolean standalone) 
+			throws TransformerFactoryConfigurationError, TransformerException {
+		Transformer tr = generateTransformer(standalone);
         StringWriter outWriter = new StringWriter();
         StreamResult sr = new StreamResult(outWriter);
         tr.transform(new DOMSource(dom), sr);
@@ -24,12 +25,14 @@ public class XmlUtils {
 
 	}
 	
-	public static Transformer generateTransformer() throws TransformerConfigurationException, TransformerFactoryConfigurationError {
+	public static Transformer generateTransformer(boolean standalone) 
+			throws TransformerConfigurationException, TransformerFactoryConfigurationError {
 		Transformer tr = TransformerFactory.newInstance().newTransformer();
 		tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");			
 		tr.setOutputProperty(OutputKeys.INDENT, "yes");
         tr.setOutputProperty(OutputKeys.METHOD, "xml");
         tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        tr.setOutputProperty(OutputKeys.STANDALONE, standalone ? "yes" : "no");
         return tr;
 
 	}

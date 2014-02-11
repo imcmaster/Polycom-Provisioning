@@ -11,10 +11,12 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class PhoneXmlConfigurationImpl implements PhoneXmlConfigurationGenerator {
+import com.voxworx.polycom.domain.SipPhone;
+
+public class PhoneConfigurationImpl implements PhoneConfigurationGenerator {
 
 	@Override
-	public String generateXMLConfiguration(List<ElementGeneratorInterface> elementGenerators) {
+	public String generateXMLConfiguration(List<ElementGenerator> elementGenerators) {
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
@@ -22,17 +24,19 @@ public class PhoneXmlConfigurationImpl implements PhoneXmlConfigurationGenerator
 		
 			db = dbf.newDocumentBuilder();
 			Document dom = db.newDocument();
+			dom.setXmlStandalone(true);
 			
 			Element root = dom.createElement("polycomConfig");
 			root.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
 			root.setAttribute("xsi:noNamespaceSchemaLocation", "polycomConfig.xsd");
 			dom.appendChild(root);
 
-			for (ElementGeneratorInterface elementGenerator : elementGenerators) {
+			for (ElementGenerator elementGenerator : elementGenerators) {
 				root.appendChild(elementGenerator.generateElement(dom));
 			}
 
-			return XmlUtils.generateStringResult(dom);
+			
+			return XmlUtils.generateStringResult(dom, true);
 			
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -47,6 +51,17 @@ public class PhoneXmlConfigurationImpl implements PhoneXmlConfigurationGenerator
 
 		return null;
 	
+	}
+
+	@Override
+	public String generateFileName(SipPhone phone) {
+		
+		StringBuilder s = new StringBuilder();
+		s.append("phone");
+		s.append(phone.getMac());
+		s.append(".cfg");
+		return s.toString();
+		
 	}
 
 }

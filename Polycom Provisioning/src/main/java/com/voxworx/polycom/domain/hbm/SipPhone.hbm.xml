@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    
+	<typedef class="com.voxworx.hibernate.StringEnumUserType" name="modeltype">
+		<param name="enumClassName">com.voxworx.polycom.PhoneModel</param>
+    </typedef>
+	
+    <class name="com.voxworx.polycom.domain.SipPhone" table="sip_phone">
+        <id name="id" 
+        	column="id">
+            <generator class="native"/>
+        </id>
+        <property name="model" column="model" type="modeltype"/>
+        <property name="mac" column="mac"/>
+        <property name="userId" column="user_id"/>
+        <property name="password" column="password"/>
+	</class>
+	
+</hibernate-mapping>

@@ -1,11 +1,27 @@
-package com.voxworx.polycom;
+package com.voxworx.polycom.domain;
+
+import com.voxworx.polycom.PhoneModel;
 
 public class SipPhone {
 	
+	private int id;		// Auto-generating ID
+	private PhoneModel model;
 	private String mac;
 	private String userId;
 	private String password;
 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public PhoneModel getModel() {
+		return model;
+	}
+	public void setModel(PhoneModel model) {
+		this.model = model;
+	}
 	public String getMac() {
 		return mac;
 	}

@@ -3,7 +3,7 @@ package com.voxworx.polycom.xml;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public interface ElementGeneratorInterface {
+public interface ElementGenerator {
 
 	/**
 	 * Each XML subsection will have a customized element generator<br>

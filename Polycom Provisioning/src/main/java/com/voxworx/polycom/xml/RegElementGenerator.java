@@ -3,15 +3,15 @@ package com.voxworx.polycom.xml;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.voxworx.polycom.SipPhone;
 import com.voxworx.polycom.SipRegistrar;
+import com.voxworx.polycom.domain.SipPhone;
 
 /**
  * Responsible for generating the reg tag
  * @author Ian
  *
  */
-public class RegElementGenerator implements ElementGeneratorInterface {
+public class RegElementGenerator implements ElementGenerator {
 
 	private final SipPhone sipPhone;
 	private final SipRegistrar sipRegistrar;
