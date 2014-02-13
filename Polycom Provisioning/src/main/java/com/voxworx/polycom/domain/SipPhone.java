@@ -1,9 +1,13 @@
 package com.voxworx.polycom.domain;
 
+import java.io.Serializable;
+
 import com.voxworx.polycom.PhoneModel;
 
-public class SipPhone {
+public class SipPhone implements Serializable {
 	
+	private static final long serialVersionUID = -8355500931726150623L;
+
 	private int id;		// Auto-generating ID
 	private PhoneModel model;
 	private String mac;
