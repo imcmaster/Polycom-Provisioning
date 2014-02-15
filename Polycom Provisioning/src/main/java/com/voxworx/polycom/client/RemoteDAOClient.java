@@ -1,6 +1,7 @@
 package com.voxworx.polycom.client;
 
 import com.voxworx.polycom.dao.PhoneDAO;
+import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.utils.MockUtils;
 import com.voxworx.utils.SpringRemotingClient;
 
@@ -15,8 +16,9 @@ public class RemoteDAOClient {
 	private void go() {
 		
 		PhoneDAO client = SpringRemotingClient.getPolycomPhoneDAORemotingClient(host);
-		client.addPhone(MockUtils.createSipPhone());
-		
+		//client.addPhone(MockUtils.createSipPhone());
+		for (SipPhone p : client.findAll())
+			System.out.println("id="+p.getUserId());
 	}
 
 }

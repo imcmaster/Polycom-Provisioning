@@ -33,9 +33,11 @@ public class HibernatePhoneDAOImpl implements PhoneDAO {
 		return hibernateTemplate.find("from SipPhone");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public SipPhone findByExtension(String extension) {
-		return null;
+		List<SipPhone> result = hibernateTemplate.find("from SipPhone where userId = ?", extension);
+		return result.size() > 0 ? result.get(0) : null;
 	}
 
 }

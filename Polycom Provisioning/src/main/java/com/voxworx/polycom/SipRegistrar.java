@@ -1,6 +1,10 @@
 package com.voxworx.polycom;
 
-public class SipRegistrar {
+import java.io.Serializable;
+
+public class SipRegistrar implements Serializable {
+
+	private static final long serialVersionUID = -914902924591550923L;
 
 	private String ipAddress;
 	private String port;

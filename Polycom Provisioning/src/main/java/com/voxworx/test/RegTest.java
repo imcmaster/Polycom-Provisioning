@@ -6,10 +6,8 @@ import java.util.List;
 import com.voxworx.polycom.SipRegistrar;
 import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.polycom.xml.ElementGenerator;
-import com.voxworx.polycom.xml.MasterConfigurationGenerator;
-import com.voxworx.polycom.xml.MasterConfigurationImpl;
-import com.voxworx.polycom.xml.PhoneConfigurationGenerator;
-import com.voxworx.polycom.xml.PhoneConfigurationImpl;
+import com.voxworx.polycom.xml.ConfigurationGenerator;
+import com.voxworx.polycom.xml.ConfigurationImpl;
 import com.voxworx.polycom.xml.RegElementGenerator;
 
 public class RegTest {
@@ -29,19 +27,16 @@ public class RegTest {
 		List<ElementGenerator> elementGenerators = new ArrayList<ElementGenerator>();
 		elementGenerators.add(regGenerator);
 		
-		PhoneConfigurationGenerator configGenerator = new PhoneConfigurationImpl();
+		ConfigurationGenerator configGenerator = new ConfigurationImpl();
 		
-		String xmlOutput = configGenerator.generateXMLConfiguration(elementGenerators);
-		String configFileName = configGenerator.generateFileName(phone);
+		configGenerator.generatePhoneConfiguration(elementGenerators, phone);
+		String configFileName = configGenerator.generatePhoneFileName(phone);
 		
-		MasterConfigurationGenerator masterGenerator = new MasterConfigurationImpl();
-		String masterXmlOutput = masterGenerator.generateMasterConfiguration(configFileName);
-		String masterFileName = masterGenerator.generateFileName(phone);
+		configGenerator.generateMasterConfiguration(phone);
+		String masterFileName = configGenerator.generateMasterFileName(phone);
+
 		System.out.println(masterFileName);
-		System.out.println(masterXmlOutput);
-		
 		System.out.println(configFileName);
-		System.out.println(xmlOutput);
 		
 	}
 
