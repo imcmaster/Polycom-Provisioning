@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.voxworx.polycom.SipRegistrar;
 import com.voxworx.polycom.domain.SipPhone;
+import com.voxworx.polycom.util.PolycomUtils;
 import com.voxworx.polycom.xml.ConfigurationGenerator;
+import com.voxworx.polycom.xml.DigitMapElementGenerator;
 import com.voxworx.polycom.xml.ElementGenerator;
 import com.voxworx.polycom.xml.RegElementGenerator;
 
@@ -23,7 +25,12 @@ public class ProvisioningImpl implements ProvisioningService {
 		List<ElementGenerator> elementGenerators = new ArrayList<ElementGenerator>();
 
 		ElementGenerator regGenerator = new RegElementGenerator(phone, registrar);
+
+		DigitMapElementGenerator digitMapGenerator = new DigitMapElementGenerator();
+		digitMapGenerator.addDigitMap(PolycomUtils.generateLocalExtension(1, 2, 3, false));
+		
 		elementGenerators.add(regGenerator);
+		elementGenerators.add(digitMapGenerator);
 		
 		configurationGenerator.generatePhoneConfiguration(elementGenerators, phone);
 		configurationGenerator.generateMasterConfiguration(phone);

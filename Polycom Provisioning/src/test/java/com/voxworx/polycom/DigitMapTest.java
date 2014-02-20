@@ -62,30 +62,20 @@ public class DigitMapTest {
 	
 	@Test
 	public void Local4Extension() {
-		DigitMap m = new DigitMap();
-		m.addDigit(new Digit(2,9));
-		m.setDigitMapLength(4);
+		DigitMap m = PolycomUtils.generateLocalExtension(2, 9, 4, false);
 		assertEquals(m.generateDigitMapString(), "[2-9]xxx");
 	}
 
 	@Test
 	public void Local3ExtensionWT() {
-		DigitMap m = new DigitMap();
-		m.addDigit(new Digit(2,9));
-		m.setDigitMapLength(3);
-		m.setAddTimeout(true);
+		DigitMap m = PolycomUtils.generateLocalExtension(2, 9, 3, true);
 		assertEquals(m.generateDigitMapString(), "[2-9]xxT");
 	}
 	
 	@Test
 	public void TwoMaps() {
-		DigitMap m = new DigitMap();
-		m.addDigit(new Digit(2,9));
-		m.setDigitMapLength(3);
-		m.setAddTimeout(true);
-		DigitMap m2 = new DigitMap();
-		m2.addDigit(new Digit(2,9));
-		m2.setDigitMapLength(4);
+		DigitMap m = PolycomUtils.generateLocalExtension(2, 9, 3, true);
+		DigitMap m2 = PolycomUtils.generateLocalExtension(2, 9, 4, false);
 		List<DigitMap> maps = new ArrayList<DigitMap>();
 		maps.add(m);
 		maps.add(m2);

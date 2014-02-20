@@ -9,7 +9,7 @@ import org.w3c.dom.Element;
 import com.voxworx.polycom.domain.DigitMap;
 import com.voxworx.polycom.util.PolycomUtils;
 
-public class DigitMapGenerator implements ElementGenerator {
+public class DigitMapElementGenerator implements ElementGenerator {
 
 	List<DigitMap> digitMaps;
 	
