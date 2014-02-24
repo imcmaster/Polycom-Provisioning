@@ -9,12 +9,17 @@
 		<param name="enumClassName">com.voxworx.polycom.PhoneModel</param>
     </typedef>
 	
+    <typedef class="com.voxworx.hibernate.StringEnumUserType" name="ringtonetype">
+		<param name="enumClassName">com.voxworx.polycom.RingTone</param>
+    </typedef>
+    	
     <class name="com.voxworx.polycom.domain.SipPhone" table="sip_phone">
         <id name="id" 
         	column="id">
             <generator class="native"/>
         </id>
         <property name="model" column="model" type="modeltype"/>
+        <property name="ringTone" column="ring_tone" type="modeltype"/>
         <property name="mac" column="mac"/>
         <property name="userId" column="user_id"/>
         <property name="password" column="password"/>

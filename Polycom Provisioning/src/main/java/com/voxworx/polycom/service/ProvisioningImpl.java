@@ -28,6 +28,7 @@ public class ProvisioningImpl implements ProvisioningService {
 
 		DigitMapElementGenerator digitMapGenerator = new DigitMapElementGenerator();
 		digitMapGenerator.addDigitMap(PolycomUtils.generateLocalExtension(1, 2, 3, false));
+		//TODO:  Add the ability to dial to PSTN (10 digit w/ area code)
 		
 		elementGenerators.add(regGenerator);
 		elementGenerators.add(digitMapGenerator);
