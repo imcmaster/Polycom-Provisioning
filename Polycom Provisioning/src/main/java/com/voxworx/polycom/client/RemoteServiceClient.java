@@ -1,6 +1,7 @@
 package com.voxworx.polycom.client;
 
 import com.voxworx.polycom.PhoneModel;
+import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.SipRegistrar;
 import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.polycom.service.ProvisioningService;
@@ -21,6 +22,7 @@ public class RemoteServiceClient {
 		sipPhone.setModel(PhoneModel.SoundPointIP321);
 		sipPhone.setUserId("103");
 		sipPhone.setPassword("test");
+		sipPhone.setRingTone(RingTone.HighestTrill);
 		SipRegistrar registrar = new SipRegistrar();
 		registrar.setIpAddress(host);
 		registrar.setPort("5060");
