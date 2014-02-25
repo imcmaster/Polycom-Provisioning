@@ -23,6 +23,7 @@
         <property name="mac" column="mac"/>
         <property name="userId" column="user_id"/>
         <property name="password" column="password"/>
+		<property name="numberLineKeys" column="no_line_keys" type="int"/>   
 	</class>
 	
 </hibernate-mapping>

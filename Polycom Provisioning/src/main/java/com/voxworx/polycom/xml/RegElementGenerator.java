@@ -38,6 +38,7 @@ public class RegElementGenerator implements ElementGenerator {
 
 		reg.setAttribute("reg.1.ringType", Integer.valueOf(sipPhone.getRingTone().getRingToneIndex()).toString());
 		reg.setAttribute("reg.1.type", "private");
+		reg.setAttribute("reg.1.lineKeys", Integer.valueOf(sipPhone.getNumberLineKeys()).toString());
 		
 		reg.setAttribute("reg.1.server.1.address", sipRegistrar.getIpAddress());
 		reg.setAttribute("reg.1.server.1.port", sipRegistrar.getPort());

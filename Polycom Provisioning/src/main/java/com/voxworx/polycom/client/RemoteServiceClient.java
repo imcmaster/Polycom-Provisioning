@@ -1,8 +1,7 @@
 package com.voxworx.polycom.client;
 
-import com.voxworx.polycom.PhoneModel;
-import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.SipRegistrar;
+import com.voxworx.polycom.dao.PhoneDAO;
 import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.polycom.service.ProvisioningService;
 import com.voxworx.utils.SpringRemotingClient;
@@ -16,17 +15,18 @@ public class RemoteServiceClient {
 	}
 
 	private void go() {
+
 		ProvisioningService s = SpringRemotingClient.getPolycomProvisioningServiceClient(host);
-		SipPhone sipPhone = new SipPhone();
-		sipPhone.setMac("0004f21b37aa");
-		sipPhone.setModel(PhoneModel.SoundPointIP321);
-		sipPhone.setUserId("103");
-		sipPhone.setPassword("test");
-		sipPhone.setRingTone(RingTone.HighestTrill);
+		PhoneDAO daoClient = SpringRemotingClient.getPolycomPhoneDAORemotingClient(host);
+
+		SipPhone sipPhone = daoClient.findByExtension("103");
+
 		SipRegistrar registrar = new SipRegistrar();
 		registrar.setIpAddress(host);
 		registrar.setPort("5060");
 		s.installConfigurationFiles(sipPhone, registrar);
+		
+		System.out.println("Complete");
 	}
 
 }
