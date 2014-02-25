@@ -61,8 +61,8 @@ public class SipPhone implements Serializable {
 	 * @param numberLineKeys The number of line keys to enable on the phone
 	 */
 	public void setNumberLineKeys(int numberLineKeys) {
-		int lineKeys = getNumberLineKeys() <= getModel().getMaxLineKeys() ? 
-				getNumberLineKeys() : getModel().getMaxLineKeys();
+		int lineKeys = numberLineKeys <= getModel().getMaxLineKeys() ? 
+				numberLineKeys : getModel().getMaxLineKeys();
 		this.numberLineKeys = lineKeys;
 	}
 

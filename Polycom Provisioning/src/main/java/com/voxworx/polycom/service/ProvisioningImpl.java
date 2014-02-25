@@ -9,7 +9,6 @@ import com.voxworx.polycom.util.PolycomUtils;
 import com.voxworx.polycom.xml.ConfigurationGenerator;
 import com.voxworx.polycom.xml.DigitMapElementGenerator;
 import com.voxworx.polycom.xml.ElementGenerator;
-import com.voxworx.polycom.xml.FeatureElementGenerator;
 import com.voxworx.polycom.xml.RegElementGenerator;
 
 public class ProvisioningImpl implements ProvisioningService {
@@ -33,13 +32,9 @@ public class ProvisioningImpl implements ProvisioningService {
 		digitMapGenerator.addDigitMap(PolycomUtils.generateLocalExtension(1, 2, 3, false));
 		//TODO:  Add the ability to dial to PSTN (10 digit w/ area code)
 		
-		// 3.  Features tag
-		FeatureElementGenerator featureElementGenerator = new FeatureElementGenerator();
-		featureElementGenerator.setCallParkEnabled(true);
 		
 		elementGenerators.add(regGenerator);
 		elementGenerators.add(digitMapGenerator);
-		elementGenerators.add(featureElementGenerator);
 		
 		configurationGenerator.generatePhoneConfiguration(elementGenerators, phone);
 		configurationGenerator.generateMasterConfiguration(phone);
