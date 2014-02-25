@@ -19,7 +19,7 @@
             <generator class="native"/>
         </id>
         <property name="model" column="model" type="modeltype"/>
-        <property name="ringTone" column="ring_tone" type="modeltype"/>
+        <property name="ringTone" column="ring_tone" type="ringtonetype"/>
         <property name="mac" column="mac"/>
         <property name="userId" column="user_id"/>
         <property name="password" column="password"/>
