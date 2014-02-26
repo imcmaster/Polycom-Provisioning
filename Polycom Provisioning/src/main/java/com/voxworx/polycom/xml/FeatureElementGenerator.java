@@ -9,6 +9,12 @@ public class FeatureElementGenerator implements ElementGenerator {
 	public void setCallParkEnabled(boolean callParkEnabled) {
 		this.callParkEnabled = callParkEnabled;
 	}
+	
+	private boolean enhancedFeatureKeysEnabled = false;
+	public void setEnhancedFeatureKeysEnabled(boolean enhancedFeatureKeysEnabled) {
+		this.enhancedFeatureKeysEnabled = enhancedFeatureKeysEnabled;
+	}
+
 
 	@Override
 	public Element generateElement(Document dom) {
@@ -21,6 +27,12 @@ public class FeatureElementGenerator implements ElementGenerator {
 			Element callPark = dom.createElement("feature.callPark");
 			callPark.setAttribute("feature.callPark.enabled", "1");
 			feature.appendChild(callPark);
+		}
+		
+		if (enhancedFeatureKeysEnabled) {
+			Element enhancedFeatureKeys = dom.createElement("feature.enhancedFeatureKeys");
+			enhancedFeatureKeys.setAttribute("feature.enhancedFeatureKeys.enabled", "1");
+			feature.appendChild(enhancedFeatureKeys);
 		}
 		
 		return feature;
