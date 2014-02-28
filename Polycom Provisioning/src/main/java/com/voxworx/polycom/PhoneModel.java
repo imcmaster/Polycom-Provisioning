@@ -10,6 +10,7 @@ public enum PhoneModel {
 	SoundPointIP450(3, false, "SPIP450"),
 	SoundPointIP550(4, false, "SPIP550"),
 	SoundPointIP560(4, false, "SPIP560"),
+	SoundPointIP600(2, false, "SPIP600"),
 	SoundPointIP650(6, false, "SPIP650"),
 	SoundPointIP670(6, false, "SPIP670");
 	
