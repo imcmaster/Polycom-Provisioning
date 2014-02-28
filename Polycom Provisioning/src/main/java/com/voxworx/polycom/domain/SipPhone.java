@@ -5,6 +5,11 @@ import java.io.Serializable;
 import com.voxworx.polycom.PhoneModel;
 import com.voxworx.polycom.RingTone;
 
+/**
+ * Represents a phone / user of a phone
+ * @author Ian
+ *
+ */
 public class SipPhone implements Serializable {
 	
 	private static final long serialVersionUID = -8355500931726150623L;
@@ -17,6 +22,12 @@ public class SipPhone implements Serializable {
 	private String password;		// Sip password
 	private int numberLineKeys;		// Number of enabled 'Line' keys on the phone (subject to maximum based on phone model)
 
+	private String domain;			// Sip registration domain (i.e. userName@domain.com)
+	private String vmPassword;		// Voicemail password (for FS voicemail - ext 4000)
+	private String dialPlanContext;	// the dialplan context to find the extension / routing information
+	private String callerIdName;	// Outbound calling; name presented
+	private String callerIdNumber;	// Outbound calling; number presented
+	
 	public int getId() {
 		return id;
 	}
@@ -64,6 +75,36 @@ public class SipPhone implements Serializable {
 		int lineKeys = numberLineKeys <= getModel().getMaxLineKeys() ? 
 				numberLineKeys : getModel().getMaxLineKeys();
 		this.numberLineKeys = lineKeys;
+	}
+	public String getDomain() {
+		return domain;
+	}
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+	public String getVmPassword() {
+		return vmPassword;
+	}
+	public void setVmPassword(String vmPassword) {
+		this.vmPassword = vmPassword;
+	}
+	public String getDialPlanContext() {
+		return dialPlanContext;
+	}
+	public void setDialPlanContext(String dialPlanContext) {
+		this.dialPlanContext = dialPlanContext;
+	}
+	public String getCallerIdName() {
+		return callerIdName;
+	}
+	public void setCallerIdName(String callerIdName) {
+		this.callerIdName = callerIdName;
+	}
+	public String getCallerIdNumber() {
+		return callerIdNumber;
+	}
+	public void setCallerIdNumber(String callerIdNumber) {
+		this.callerIdNumber = callerIdNumber;
 	}
 
 }

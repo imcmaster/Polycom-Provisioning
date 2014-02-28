@@ -23,7 +23,12 @@
         <property name="mac" column="mac"/>
         <property name="userId" column="user_id"/>
         <property name="password" column="password"/>
-		<property name="numberLineKeys" column="no_line_keys" type="int"/>   
+		<property name="numberLineKeys" column="no_line_keys" type="int"/>
+		<property name="domain" column="domain"/>
+		<property name="vmPassword" column="vm_password"/>
+		<property name="dialPlanContext" column="dial_plan_context"/>
+		<property name="callerIdName" column="callerid_name"/>
+		<property name="callerIdNumber" column="callerid_number"/>
 	</class>
 	
 </hibernate-mapping>

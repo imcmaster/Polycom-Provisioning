@@ -10,6 +10,6 @@ public interface PhoneDAO {
 	public void delete(SipPhone phone);
 	
 	public List<SipPhone> findAll();
-	public SipPhone findByExtension(String extension);
+	public SipPhone findByExtension(String domain, String extension);
 	
 }

@@ -35,8 +35,8 @@ public class HibernatePhoneDAOImpl implements PhoneDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public SipPhone findByExtension(String extension) {
-		List<SipPhone> result = hibernateTemplate.find("from SipPhone where userId = ?", extension);
+	public SipPhone findByExtension(String domain, String extension) {
+		List<SipPhone> result = hibernateTemplate.find("from SipPhone where domain = ? and userId = ?", domain, extension);
 		return result.size() > 0 ? result.get(0) : null;
 	}
 

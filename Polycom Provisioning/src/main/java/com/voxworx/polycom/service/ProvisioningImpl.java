@@ -41,7 +41,7 @@ public class ProvisioningImpl implements ProvisioningService {
 		
 		// 4.  Soft key tag
 		SoftKeyProfile softKeyProfile = new SoftKeyProfile(phone.getModel());
-		softKeyProfile.addCustomSoftKey(PolycomUtils.createCustomSoftKeyPark());
+		softKeyProfile.addCustomSoftKey(PolycomUtils.createCustomSoftKeyPark("*5"));
 		SoftKeyElementGenerator softKeyElementGenerator = new SoftKeyElementGenerator(softKeyProfile);
 		
 		elementGenerators.add(regGenerator);

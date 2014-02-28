@@ -42,13 +42,16 @@ public class PolycomUtils {
 	}
 	
 	/**
-	 * Convenience method to create a Park soft key
+	 * Convenience method to create a Park soft key (using *1$Tdtmf$)
+	 * Will place the Park soft key before the default keys ('precede')
 	 * @return The instance of a new park soft key
 	 */
-	public static CustomSoftKey createCustomSoftKeyPark() {
+	public static CustomSoftKey createCustomSoftKeyPark(String starCode) {
 		CustomSoftKey parkSoftKey = new CustomSoftKey("Park");
 		parkSoftKey.enableForActiveState();
-		parkSoftKey.setAction("$FDailpadPound$Cp1$700$Tdtmf$");
+		StringBuffer s = new StringBuffer(starCode);
+		s.append("$dtmf$");		// SIP INVITE packet to extension 'parkExtension'
+		parkSoftKey.setAction(s.toString());
 		parkSoftKey.setSoftKeyPositionPrecedesDefaultSoftKeys(true);
 		return parkSoftKey;
 	}
