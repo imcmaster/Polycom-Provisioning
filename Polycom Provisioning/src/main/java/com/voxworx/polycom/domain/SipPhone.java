@@ -15,18 +15,22 @@ public class SipPhone implements Serializable {
 	private static final long serialVersionUID = -8355500931726150623L;
 
 	private int id;		// Auto-generating ID
+	private String userId;			// Phone extension (also used for sip registration)
+	private String domain;			// Sip registration domain (i.e. userName@domain.com)
+	private String password;		// Sip password
+
+	private String mac;				// MAC address
 	private PhoneModel model;		// i.e. 320, 321, 450, 550, etc
 	private RingTone ringTone;		// Default ring tone
-	private String mac;				// MAC address
-	private String userId;			// Phone extension (also used for sip registration)
-	private String password;		// Sip password
 	private int numberLineKeys;		// Number of enabled 'Line' keys on the phone (subject to maximum based on phone model)
 
-	private String domain;			// Sip registration domain (i.e. userName@domain.com)
 	private String vmPassword;		// Voicemail password (for FS voicemail - ext 4000)
-	private String dialPlanContext;	// the dialplan context to find the extension / routing information
+	private String dialPlanContext;	// the inbound dialplan context to find the extension / routing information
 	private String callerIdName;	// Outbound calling; name presented
 	private String callerIdNumber;	// Outbound calling; number presented
+	
+	//Features
+	private boolean enablePark;		// Soft key park
 	
 	public int getId() {
 		return id;
@@ -105,6 +109,12 @@ public class SipPhone implements Serializable {
 	}
 	public void setCallerIdNumber(String callerIdNumber) {
 		this.callerIdNumber = callerIdNumber;
+	}
+	public boolean isEnablePark() {
+		return enablePark;
+	}
+	public void setEnablePark(boolean enablePark) {
+		this.enablePark = enablePark;
 	}
 
 }

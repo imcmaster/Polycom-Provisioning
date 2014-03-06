@@ -29,25 +29,27 @@ public class ProvisioningImpl implements ProvisioningService {
 
 		// 1.  Registration tag
 		ElementGenerator regGenerator = new RegElementGenerator(phone, registrar);
+		elementGenerators.add(regGenerator);
 
 		// 2.  Digitmap tag
 		DigitMapElementGenerator digitMapGenerator = new DigitMapElementGenerator();
 		digitMapGenerator.addDigitMap(PolycomUtils.generateLocalExtension(1, 2, 3, false));
 		//TODO:  Add the ability to dial to PSTN (10 digit w/ area code)
+		elementGenerators.add(digitMapGenerator);
 		
 		// 3.  Features tag; to set the enhancedFeatureKeys
 		FeatureElementGenerator featureElementGenerator = new FeatureElementGenerator();
 		featureElementGenerator.setEnhancedFeatureKeysEnabled(true);
+		elementGenerators.add(featureElementGenerator);
 		
 		// 4.  Soft key tag
-		SoftKeyProfile softKeyProfile = new SoftKeyProfile(phone.getModel());
-		softKeyProfile.addCustomSoftKey(PolycomUtils.createCustomSoftKeyPark("*5"));
-		SoftKeyElementGenerator softKeyElementGenerator = new SoftKeyElementGenerator(softKeyProfile);
-		
-		elementGenerators.add(regGenerator);
-		elementGenerators.add(digitMapGenerator);
-		elementGenerators.add(featureElementGenerator);
-		elementGenerators.add(softKeyElementGenerator);
+		//TODO:  Can' hardcode soft key *5
+		if (phone.isEnablePark()) {
+			SoftKeyProfile softKeyProfile = new SoftKeyProfile(phone.getModel());
+			softKeyProfile.addCustomSoftKey(PolycomUtils.createCustomSoftKeyPark("*5"));
+			SoftKeyElementGenerator softKeyElementGenerator = new SoftKeyElementGenerator(softKeyProfile);
+			elementGenerators.add(softKeyElementGenerator);
+		}
 		
 		configurationGenerator.generatePhoneConfiguration(elementGenerators, phone);
 		configurationGenerator.generateMasterConfiguration(phone);

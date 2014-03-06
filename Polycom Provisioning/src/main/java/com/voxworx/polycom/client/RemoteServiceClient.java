@@ -19,7 +19,7 @@ public class RemoteServiceClient {
 		ProvisioningService s = SpringRemotingClient.getPolycomProvisioningServiceClient(host);
 		PhoneDAO daoClient = SpringRemotingClient.getPolycomPhoneDAORemotingClient(host);
 
-		SipPhone sipPhone = daoClient.findByExtension("192.168.2.7", "103");
+		SipPhone sipPhone = daoClient.findByExtension("192.168.2.7", "101");
 		
 		System.out.println("Model="+sipPhone.getModel());
 		System.out.println("LK="+sipPhone.getNumberLineKeys());

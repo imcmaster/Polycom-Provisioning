@@ -50,7 +50,7 @@ public class PolycomUtils {
 		CustomSoftKey parkSoftKey = new CustomSoftKey("Park");
 		parkSoftKey.enableForActiveState();
 		StringBuffer s = new StringBuffer(starCode);
-		s.append("$dtmf$");		// SIP INVITE packet to extension 'parkExtension'
+		s.append("$Tdtmf$");		// dtmf to extension 'parkExtension'
 		parkSoftKey.setAction(s.toString());
 		parkSoftKey.setSoftKeyPositionPrecedesDefaultSoftKeys(true);
 		return parkSoftKey;

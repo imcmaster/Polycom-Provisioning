@@ -29,6 +29,7 @@
 		<property name="dialPlanContext" column="dial_plan_context"/>
 		<property name="callerIdName" column="callerid_name"/>
 		<property name="callerIdNumber" column="callerid_number"/>
+		<property name="enablePark" column="enable_park" type="boolean"/>
 	</class>
 	
 </hibernate-mapping>
