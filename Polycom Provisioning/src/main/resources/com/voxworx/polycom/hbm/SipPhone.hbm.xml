@@ -30,6 +30,7 @@
 		<property name="callerIdName" column="callerid_name"/>
 		<property name="callerIdNumber" column="callerid_number"/>
 		<property name="enablePark" column="enable_park" type="boolean"/>
+		<property name="enableVoiceMail" column="enable_voicemail" type="boolean"/>
 	</class>
 	
 </hibernate-mapping>

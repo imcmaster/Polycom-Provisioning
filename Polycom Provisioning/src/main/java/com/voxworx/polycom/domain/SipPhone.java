@@ -31,6 +31,7 @@ public class SipPhone implements Serializable {
 	
 	//Features
 	private boolean enablePark;		// Soft key park
+	private boolean enableVoiceMail;	// Enable 'Messages' button, and MWI
 	
 	public int getId() {
 		return id;
@@ -115,6 +116,12 @@ public class SipPhone implements Serializable {
 	}
 	public void setEnablePark(boolean enablePark) {
 		this.enablePark = enablePark;
+	}
+	public boolean isEnableVoiceMail() {
+		return enableVoiceMail;
+	}
+	public void setEnableVoiceMail(boolean enableVoiceMail) {
+		this.enableVoiceMail = enableVoiceMail;
 	}
 
 }

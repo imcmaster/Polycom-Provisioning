@@ -11,8 +11,10 @@ import com.voxworx.polycom.xml.ConfigurationGenerator;
 import com.voxworx.polycom.xml.DigitMapElementGenerator;
 import com.voxworx.polycom.xml.ElementGenerator;
 import com.voxworx.polycom.xml.FeatureElementGenerator;
+import com.voxworx.polycom.xml.MessageWaitingElementGenerator;
 import com.voxworx.polycom.xml.RegElementGenerator;
 import com.voxworx.polycom.xml.SoftKeyElementGenerator;
+import com.voxworx.polycom.xml.UserPreferenceElementGenerator;
 
 public class ProvisioningImpl implements ProvisioningService {
 
@@ -49,6 +51,15 @@ public class ProvisioningImpl implements ProvisioningService {
 			softKeyProfile.addCustomSoftKey(PolycomUtils.createCustomSoftKeyPark("*5"));
 			SoftKeyElementGenerator softKeyElementGenerator = new SoftKeyElementGenerator(softKeyProfile);
 			elementGenerators.add(softKeyElementGenerator);
+		}
+		
+		// 5.  Voice Mail
+		if (phone.isEnableVoiceMail()) {
+			UserPreferenceElementGenerator up = new UserPreferenceElementGenerator();
+			up.setEnableVoiceMail(true);
+			MessageWaitingElementGenerator msg = new MessageWaitingElementGenerator(phone);
+			elementGenerators.add(up);
+			elementGenerators.add(msg);
 		}
 		
 		configurationGenerator.generatePhoneConfiguration(elementGenerators, phone);
