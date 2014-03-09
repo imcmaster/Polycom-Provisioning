@@ -42,12 +42,12 @@ public class MessageWaitingElementGenerator implements ElementGenerator {
 
 		Element msg = dom.createElement("msg");
 		
-		msg.setAttribute("msg.mwi.x.subscribe", sipPhone.getUserId());	// SIP SUBSCRIBE (for NOTIFY messages)
+		msg.setAttribute("msg.mwi.1.subscribe", sipPhone.getUserId());	// SIP SUBSCRIBE (for NOTIFY messages)
 		if (mode == RETRIEVAL_MODE.SYSTEM_VOICEMAIL_EXTENSION) {
-			msg.setAttribute("msg.mwi.x.callBackMode", "contact");
-			msg.setAttribute("msg.mwi.x.callBack", systemVoiceMailExtension);
+			msg.setAttribute("msg.mwi.1.callBackMode", "contact");
+			msg.setAttribute("msg.mwi.1.callBack", systemVoiceMailExtension);
 		} else {
-			msg.setAttribute("msg.mwi.x.callBackMode", "registration");
+			msg.setAttribute("msg.mwi.1.callBackMode", "registration");
 		}
 		
 		return msg;
