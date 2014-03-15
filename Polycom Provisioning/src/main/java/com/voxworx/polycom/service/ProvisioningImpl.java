@@ -72,9 +72,12 @@ public class ProvisioningImpl implements ProvisioningService {
 		ringClassElementGenerator.addRingClassParameter(PolycomUtils.createRingClassUsingRingTone(RingClass.CUSTOM1, "Custom 1", RingTone.Beeble));
 		elementGenerators.add(ringClassElementGenerator);
 		
-		// 7.  Create an alert-info mapping (voIpProt.SIP.alertInfo)
+		// 7.  Create a few alert-info mapping (voIpProt.SIP.alertInfo)
 		SipParameters sipParameters = new SipParameters();
-		sipParameters.addAlertInfoMapping("Custom 1", RingClass.CUSTOM1);
+		sipParameters.addAlertInfoMapping(RingClass.CUSTOM1);
+		sipParameters.addAlertInfoMapping(RingClass.AUTOANSWER);
+		sipParameters.addAlertInfoMapping(RingClass.RINGAUTOANSWER);
+
 		SipElementGenerator sipElementGenerator = new SipElementGenerator(sipParameters);
 		elementGenerators.add(sipElementGenerator);
 		

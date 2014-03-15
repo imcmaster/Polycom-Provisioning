@@ -3,6 +3,7 @@ package com.voxworx.polycom.xml;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.voxworx.polycom.RingClass;
 import com.voxworx.polycom.SipParameters;
 
 /**
@@ -27,9 +28,9 @@ public class SipElementGenerator implements ElementGenerator {
 		Element alertInfoTag = dom.createElement("voIpProt.SIP.alertInfo");
 		sipTag.appendChild(alertInfoTag);
 		int i = 1;
-		for (SipParameters.AlertInfo alertInfo : sipParameters.getAlertInfoMappings()) {
-			alertInfoTag.setAttribute(buildAttributeName(i, "value"), alertInfo.getHeaderValue());
-			alertInfoTag.setAttribute(buildAttributeName(i, "class"), alertInfo.getRingClass().getRingClassName());
+		for (RingClass ringClass : sipParameters.getAlertInfoMappings()) {
+			alertInfoTag.setAttribute(buildAttributeName(i, "value"), ringClass.getRingClassName());
+			alertInfoTag.setAttribute(buildAttributeName(i, "class"), ringClass.getRingClassName());
 			i++;
 		}
 		return voipTag;

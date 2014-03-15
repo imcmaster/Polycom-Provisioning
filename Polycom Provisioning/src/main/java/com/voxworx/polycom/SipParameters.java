@@ -10,29 +10,9 @@ import java.util.List;
  */
 public class SipParameters {
 
-	/**
-	 * The SIP server may send an Alert-Info header.  The name provided will map to an internal ring class
-	 * @author Ian
-	 *
-	 */
-	public class AlertInfo {
-		private final String headerValue;		// The string that will appear in the Alert-Info header
-		private final RingClass ringClass;	// The ring class to use for this Alert-Info header
-		public AlertInfo(String headerValue, RingClass ringClass) {
-			super();
-			this.headerValue = headerValue;
-			this.ringClass = ringClass;
-		}
-		public String getHeaderValue() {
-			return headerValue;
-		}
-		public RingClass getRingClass() {
-			return ringClass;
-		}
-	}
 
-	private final List<AlertInfo> alertInfoMappings = new ArrayList<AlertInfo>();
-	public List<AlertInfo> getAlertInfoMappings() {
+	private final List<RingClass> alertInfoMappings = new ArrayList<RingClass>();
+	public List<RingClass> getAlertInfoMappings() {
 		return alertInfoMappings;
 	}
 
@@ -42,8 +22,8 @@ public class SipParameters {
 	 * @param headerValue The alert-info header value (as populated by the SIP server)
 	 * @param mappedRingClass The ring class to map this request to
 	 */
-	public void addAlertInfoMapping(String headerValue, RingClass mappedRingClass) {
-		alertInfoMappings.add(new AlertInfo(headerValue, mappedRingClass));
+	public void addAlertInfoMapping(RingClass mappedRingClass) {
+		alertInfoMappings.add(mappedRingClass);
 	}
 	
 }
