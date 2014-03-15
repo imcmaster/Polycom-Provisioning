@@ -38,5 +38,13 @@ public enum RingTone {
 		this.description = description;
 	}
 	
+	/**
+	 * Generate the name, starting with "ringer"; ie "ringer2"
+	 * @return
+	 */
+	public String getRingerName() {
+		return "ringer"+Integer.valueOf(ringToneIndex).toString();
+	}
+	
 	
 }
