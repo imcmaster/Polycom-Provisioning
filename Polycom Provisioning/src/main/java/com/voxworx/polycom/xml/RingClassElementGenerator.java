@@ -36,7 +36,7 @@ public class RingClassElementGenerator implements ElementGenerator {
 			rcpTag.setAttribute(buildAttributeName(rcp.getRingClass().getRingClassName(), "name"), rcp.getName());
 			rcpTag.setAttribute(buildAttributeName(rcp.getRingClass().getRingClassName(), "ringer"), rcp.getRingTone().getRingerName());
 			rcpTag.setAttribute(buildAttributeName(rcp.getRingClass().getRingClassName(), "timeout"), Integer.valueOf(rcp.getRingTimeout()).toString());
-			rcpTag.setAttribute(buildAttributeName(rcp.getRingClass().getRingClassName(), "type"), rcp.getCallProgressCallWait().getCallProgressName());
+			rcpTag.setAttribute(buildAttributeName(rcp.getRingClass().getRingClassName(), "type"), rcp.getAnswerMode().getAnswerModeType());
 			seRingTone.appendChild(rcpTag);
 		}
 		
