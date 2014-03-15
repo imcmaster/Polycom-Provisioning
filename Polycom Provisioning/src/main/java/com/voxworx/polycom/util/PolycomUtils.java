@@ -3,6 +3,9 @@ package com.voxworx.polycom.util;
 import java.util.List;
 
 import com.voxworx.polycom.CustomSoftKey;
+import com.voxworx.polycom.RingClass;
+import com.voxworx.polycom.RingClassParameters;
+import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.domain.Digit;
 import com.voxworx.polycom.domain.DigitMap;
 
@@ -54,6 +57,19 @@ public class PolycomUtils {
 		parkSoftKey.setAction(s.toString());
 		parkSoftKey.setSoftKeyPositionPrecedesDefaultSoftKeys(true);
 		return parkSoftKey;
+	}
+	
+	/**
+	 * Convenience method to create a Ring Class used for distinctive ringing
+	 * @param ringClass The name of the ring class (fixed by enum)
+	 * @param name A friendly name
+	 * @param ringTone The ring tone to use for this class (which overrides the default Lowest Trill 2)
+	 * @return The populated object (other data is defaulted)
+	 */
+	public static RingClassParameters createRingClassUsingRingTone(RingClass ringClass, String name, RingTone ringTone) {
+		RingClassParameters rcp = new RingClassParameters(ringClass, name);
+		rcp.setRingTone(ringTone);
+		return rcp;
 	}
 	
 }

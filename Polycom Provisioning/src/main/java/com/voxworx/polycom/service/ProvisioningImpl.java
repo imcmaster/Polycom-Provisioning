@@ -3,6 +3,8 @@ package com.voxworx.polycom.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.voxworx.polycom.RingClass;
+import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.SipRegistrar;
 import com.voxworx.polycom.SoftKeyProfile;
 import com.voxworx.polycom.domain.SipPhone;
@@ -13,6 +15,7 @@ import com.voxworx.polycom.xml.ElementGenerator;
 import com.voxworx.polycom.xml.FeatureElementGenerator;
 import com.voxworx.polycom.xml.MessageWaitingElementGenerator;
 import com.voxworx.polycom.xml.RegElementGenerator;
+import com.voxworx.polycom.xml.RingClassElementGenerator;
 import com.voxworx.polycom.xml.SoftKeyElementGenerator;
 import com.voxworx.polycom.xml.UserPreferenceElementGenerator;
 
@@ -61,6 +64,11 @@ public class ProvisioningImpl implements ProvisioningService {
 			elementGenerators.add(up);
 			elementGenerators.add(msg);
 		}
+		
+		// 6.  Create a ring class (for distinctive ring); in future this XML may move to a shared file
+		RingClassElementGenerator ringClassElementGenerator = new RingClassElementGenerator();
+		ringClassElementGenerator.addRingClassParameter(PolycomUtils.createRingClassUsingRingTone(RingClass.CUSTOM1, "Custom 1", RingTone.Beeble));
+		elementGenerators.add(ringClassElementGenerator);
 		
 		configurationGenerator.generatePhoneConfiguration(elementGenerators, phone);
 		configurationGenerator.generateMasterConfiguration(phone);

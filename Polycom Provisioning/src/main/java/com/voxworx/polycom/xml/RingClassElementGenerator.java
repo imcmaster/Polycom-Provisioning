@@ -8,6 +8,12 @@ import org.w3c.dom.Element;
 
 import com.voxworx.polycom.RingClassParameters;
 
+/**
+ * Builds XML for a ring class (i.e. se.rt.classname.xxxx)
+ * Used for (at least) distinctive ringing
+ * @author Ian
+ *
+ */
 public class RingClassElementGenerator implements ElementGenerator {
 
 	private final List<RingClassParameters> ringClassParameters = new ArrayList<RingClassParameters>();

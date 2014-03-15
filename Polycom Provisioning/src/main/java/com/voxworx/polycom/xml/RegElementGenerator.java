@@ -27,7 +27,7 @@ public class RegElementGenerator implements ElementGenerator {
 
 		Element reg = dom.createElement("reg");
 /*
-		<reg reg.1.displayName="102" reg.1.ringType="2" />
+		<reg reg.1.displayName="102"/>
 */
 		
 		reg.setAttribute("reg.1.label", sipPhone.getUserId());

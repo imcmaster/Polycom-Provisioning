@@ -55,6 +55,10 @@ public class RingClassParameters {
 		return ringTimeout;
 	}
 
+	/**
+	 * Timeout is in milliseconds (i.e. 2000 = 2 seconds)
+	 * @param ringTimeout Timer in milliseconds
+	 */
 	public void setRingTimeout(int ringTimeout) {
 		this.ringTimeout = ringTimeout;
 	}
