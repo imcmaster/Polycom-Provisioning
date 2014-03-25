@@ -88,7 +88,8 @@ public class ProvisioningImpl implements ProvisioningService {
 		 */
 		configurationGenerator.generatePhoneConfiguration(elementGenerators, phone);
 		configurationGenerator.generateMasterConfiguration(phone);
-		configurationGenerator.generateLocalContactConfiguration(phone);
+		if (phone.getLocalContacts() != null && phone.getLocalContacts().size() > 0)
+			configurationGenerator.generateLocalContactConfiguration(phone);
 		
 	}
 
