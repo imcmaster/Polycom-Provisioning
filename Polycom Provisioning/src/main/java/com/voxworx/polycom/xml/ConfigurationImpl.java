@@ -130,6 +130,10 @@ public class ConfigurationImpl implements ConfigurationGenerator {
 				Element itemTag = dom.createElement("item");
 				itemList.appendChild(itemTag);
 				
+				Element label = dom.createElement("lb");
+				label.setTextContent(contact.getLabel());
+				itemTag.appendChild(label);
+				
 				Element lastName = dom.createElement("ln");
 				lastName.setTextContent(contact.getLastName());
 				itemTag.appendChild(lastName);

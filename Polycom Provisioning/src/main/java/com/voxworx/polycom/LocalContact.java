@@ -13,6 +13,7 @@ public class LocalContact implements Serializable {
 
 	private String firstName;
 	private String lastName;
+	private String label;
 	private final String contact;	// sip id
 	private RingTone ringTone;
 	private boolean presence;	// if true then SIP SUBSCRIBE / NOTIFY (presence) will be activated (buddy watch)
@@ -57,7 +58,13 @@ public class LocalContact implements Serializable {
 	public String getContact() {
 		return contact;
 	}
-	
-	
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
 	
 }
