@@ -1,7 +1,9 @@
 package com.voxworx.polycom.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.voxworx.polycom.LocalContact;
 import com.voxworx.polycom.PhoneModel;
 import com.voxworx.polycom.RingTone;
 
@@ -28,6 +30,8 @@ public class SipPhone implements Serializable {
 	private String dialPlanContext;	// the inbound dialplan context to find the extension / routing information
 	private String callerIdName;	// Outbound calling; name presented
 	private String callerIdNumber;	// Outbound calling; number presented
+	
+	private List<LocalContact> localContacts;
 	
 	//Features
 	private boolean enablePark;		// Soft key park
@@ -122,6 +126,12 @@ public class SipPhone implements Serializable {
 	}
 	public void setEnableVoiceMail(boolean enableVoiceMail) {
 		this.enableVoiceMail = enableVoiceMail;
+	}
+	public List<LocalContact> getLocalContacts() {
+		return localContacts;
+	}
+	public void setLocalContacts(List<LocalContact> localContacts) {
+		this.localContacts = localContacts;
 	}
 
 }

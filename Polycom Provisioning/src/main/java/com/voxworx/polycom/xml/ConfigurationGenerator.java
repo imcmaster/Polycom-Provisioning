@@ -11,5 +11,8 @@ public interface ConfigurationGenerator {
 
 	public void generatePhoneConfiguration(List<ElementGenerator> elementGenerators, SipPhone phone);
 	public String generatePhoneFileName(SipPhone phone);
+	
+	public void generateLocalContactConfiguration(SipPhone phone);
+	public String generateLocalContactFileName(SipPhone phone);
 
 }

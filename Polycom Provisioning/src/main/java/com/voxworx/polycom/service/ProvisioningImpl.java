@@ -47,6 +47,8 @@ public class ProvisioningImpl implements ProvisioningService {
 		// 3.  Features tag; to set the enhancedFeatureKeys
 		FeatureElementGenerator featureElementGenerator = new FeatureElementGenerator();
 		featureElementGenerator.setEnhancedFeatureKeysEnabled(true);
+		// TODO:  Should be enabled if a SipPhone.contact has bw=1
+		featureElementGenerator.setPresenceEnabled(true);
 		elementGenerators.add(featureElementGenerator);
 		
 		// 4.  Soft key tag
@@ -81,8 +83,12 @@ public class ProvisioningImpl implements ProvisioningService {
 		SipElementGenerator sipElementGenerator = new SipElementGenerator(sipParameters);
 		elementGenerators.add(sipElementGenerator);
 		
+		/*
+		 * Final step - build the phone's configuration files
+		 */
 		configurationGenerator.generatePhoneConfiguration(elementGenerators, phone);
 		configurationGenerator.generateMasterConfiguration(phone);
+		configurationGenerator.generateLocalContactConfiguration(phone);
 		
 	}
 

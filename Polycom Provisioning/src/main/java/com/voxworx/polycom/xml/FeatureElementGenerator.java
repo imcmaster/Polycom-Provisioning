@@ -14,6 +14,11 @@ public class FeatureElementGenerator implements ElementGenerator {
 	public void setEnhancedFeatureKeysEnabled(boolean enhancedFeatureKeysEnabled) {
 		this.enhancedFeatureKeysEnabled = enhancedFeatureKeysEnabled;
 	}
+	
+	private boolean presenceEnabled = false;
+	public void setPresenceEnabled(boolean presenceEnabled) {
+		this.presenceEnabled = presenceEnabled;
+	}
 
 
 	@Override
@@ -32,6 +37,12 @@ public class FeatureElementGenerator implements ElementGenerator {
 		if (enhancedFeatureKeysEnabled) {
 			Element enhancedFeatureKeys = dom.createElement("feature.enhancedFeatureKeys");
 			enhancedFeatureKeys.setAttribute("feature.enhancedFeatureKeys.enabled", "1");
+			feature.appendChild(enhancedFeatureKeys);
+		}
+		
+		if (presenceEnabled) {
+			Element enhancedFeatureKeys = dom.createElement("feature.presence");
+			enhancedFeatureKeys.setAttribute("feature.presence.enabled", "1");
 			feature.appendChild(enhancedFeatureKeys);
 		}
 		
