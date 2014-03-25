@@ -157,7 +157,7 @@ public class ConfigurationImpl implements ConfigurationGenerator {
 		
 		StringBuilder s = new StringBuilder();
 		s.append(phone.getMac());
-		s.append("-directory.cfg");
+		s.append("-directory.xml");
 		return s.toString();
 	}
 

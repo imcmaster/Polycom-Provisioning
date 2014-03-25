@@ -1,5 +1,7 @@
 package com.voxworx.polycom.client;
 
+import com.voxworx.polycom.LocalContact;
+import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.SipRegistrar;
 import com.voxworx.polycom.dao.PhoneDAO;
 import com.voxworx.polycom.domain.SipPhone;
@@ -20,6 +22,8 @@ public class RemoteServiceClient {
 		PhoneDAO daoClient = SpringRemotingClient.getPolycomPhoneDAORemotingClient(host);
 
 		SipPhone sipPhone = daoClient.findByExtension(host, "101");
+
+		sipPhone.addLocalContact(createLocalContact("103"));
 		
 		System.out.println("Model="+sipPhone.getModel());
 		System.out.println("LK="+sipPhone.getNumberLineKeys());
@@ -32,4 +36,12 @@ public class RemoteServiceClient {
 		System.out.println("Complete");
 	}
 
+	private LocalContact createLocalContact(String contactName) {
+		LocalContact contact = new LocalContact("103");
+		contact.setLastName("Pharmacy");
+		contact.setRingTone(RingTone.LowDoubleTrill);
+		contact.setPresence(true);
+		return contact;
+	}
+	
 }

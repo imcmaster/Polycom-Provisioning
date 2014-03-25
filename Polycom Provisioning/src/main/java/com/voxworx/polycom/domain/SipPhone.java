@@ -1,6 +1,7 @@
 package com.voxworx.polycom.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.voxworx.polycom.LocalContact;
@@ -85,6 +86,16 @@ public class SipPhone implements Serializable {
 				numberLineKeys : getModel().getMaxLineKeys();
 		this.numberLineKeys = lineKeys;
 	}
+	/**
+	 * Add a contact to the local contact list
+	 * @param contact The contact to add
+	 */
+	public void addLocalContact(LocalContact contact) {
+		if (localContacts == null)
+			localContacts = new ArrayList<LocalContact>();
+		localContacts.add(contact);
+	}
+	
 	public String getDomain() {
 		return domain;
 	}
