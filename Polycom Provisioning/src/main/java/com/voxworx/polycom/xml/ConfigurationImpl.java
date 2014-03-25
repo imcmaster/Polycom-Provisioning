@@ -126,14 +126,34 @@ public class ConfigurationImpl implements ConfigurationGenerator {
 			
 			int speedDialIndex = 1;
 			for (LocalContact contact : phone.getLocalContacts()) {
+				
 				Element itemTag = dom.createElement("item");
 				itemList.appendChild(itemTag);
-				itemTag.setAttribute("ln", contact.getLastName());
-				itemTag.setAttribute("fn", contact.getFirstName());
-				itemTag.setAttribute("ct", contact.getContact());
-				itemTag.setAttribute("rt", Integer.valueOf(contact.getRingTone().getRingToneIndex()).toString());
-				itemTag.setAttribute("sd", Integer.valueOf(speedDialIndex).toString());
-				itemTag.setAttribute("bw", contact.isPresence() ? "1" : "0");
+				
+				Element lastName = dom.createElement("ln");
+				lastName.setTextContent(contact.getLastName());
+				itemTag.appendChild(lastName);
+				
+				Element firstName = dom.createElement("fn");
+				firstName.setTextContent(contact.getFirstName());
+				itemTag.appendChild(firstName);
+				
+				Element contactTag = dom.createElement("ct");
+				contactTag.setTextContent(contact.getContact());
+				itemTag.appendChild(contactTag);
+				
+				Element ringTone = dom.createElement("rt");
+				ringTone.setTextContent(Integer.valueOf(contact.getRingTone().getRingToneIndex()).toString());
+				itemTag.appendChild(ringTone);
+				
+				Element speedDial = dom.createElement("sd");
+				speedDial.setTextContent(Integer.valueOf(speedDialIndex).toString());
+				itemTag.appendChild(speedDial);
+				
+				Element buddyWatch = dom.createElement("bw");
+				buddyWatch.setTextContent(contact.isPresence() ? "1" : "0");
+				itemTag.appendChild(buddyWatch);
+				
 				speedDialIndex++;
 			}
 		
