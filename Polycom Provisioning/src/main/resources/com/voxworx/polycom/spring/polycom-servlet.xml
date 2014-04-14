@@ -13,8 +13,8 @@
 		<property name="order" value="9" />
 		<property name="mappings">
 			<props>
-				<prop key="/polycom/phonedao.http">springHttpInvokerPhoneDAO</prop>
-				<prop key="/polycom/phoneservice.http">springHttpInvokerPhoneService</prop>
+				<prop key="/polycom/phonedao">springHttpInvokerPhoneDAO</prop>
+				<prop key="/polycom/phoneservice">springHttpInvokerPhoneService</prop>
 			</props>
 		</property>
 	</bean>	

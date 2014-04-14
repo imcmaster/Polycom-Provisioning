@@ -38,7 +38,7 @@ public class RemoteServiceClient {
 
 	private LocalContact createLocalContact(String contactName) {
 		LocalContact contact = new LocalContact("103");
-		contact.setLastName("Pharmacy");
+		contact.setLabel("Pharmacy");
 		contact.setRingTone(RingTone.LowDoubleTrill);
 		contact.setPresence(true);
 		return contact;

@@ -9,8 +9,8 @@ public class SpringRemotingClient {
 	
 	enum REMOTE_URLS {
 		
-		POLYCOM_DAO("polycom/phonedao.http"),
-		POLYCOM_SERVICE("polycom/phoneservice.http");
+		POLYCOM_DAO("http/polycom/phonedao"),
+		POLYCOM_SERVICE("http/polycom/phoneservice");
 		
 		private REMOTE_URLS(String url) {
 			this.url = url;
