@@ -13,18 +13,18 @@
 		<property name="order" value="9" />
 		<property name="mappings">
 			<props>
-				<prop key="/polycom/phonedao">springHttpInvokerPhoneDAO</prop>
-				<prop key="/polycom/phoneservice">springHttpInvokerPhoneService</prop>
+				<prop key="/polycom/phonedao">springHttpInvokerPolycomPhoneDAO</prop>
+				<prop key="/polycom/phoneservice">springHttpInvokerPolycomPhoneService</prop>
 			</props>
 		</property>
 	</bean>	
 	
-	<bean id="springHttpInvokerPhoneDAO" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+	<bean id="springHttpInvokerPolycomPhoneDAO" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
 		<property name="service" ref="sipPhoneDAO" />
 		<property name="serviceInterface" value="com.voxworx.polycom.dao.PhoneDAO" />
 	</bean>
 	
-	<bean id="springHttpInvokerPhoneService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+	<bean id="springHttpInvokerPolycomPhoneService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
 		<property name="service" ref="provisioningService" />
 		<property name="serviceInterface" value="com.voxworx.polycom.service.ProvisioningService" />
 	</bean>

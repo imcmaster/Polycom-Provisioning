@@ -7,7 +7,8 @@ import com.voxworx.utils.SpringRemotingClient;
 
 public class RemoteDAOClient {
 
-	private static final String host = "192.168.2.7";
+	//private static final String host = "192.168.2.7";
+	private static final String host = "67.213.75.234";
 
 	public static void main(String[] args) {
 		new RemoteDAOClient().go();

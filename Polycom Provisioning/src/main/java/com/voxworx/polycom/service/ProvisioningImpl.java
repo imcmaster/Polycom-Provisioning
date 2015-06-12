@@ -3,6 +3,10 @@ package com.voxworx.polycom.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+
 import com.voxworx.polycom.RingClass;
 import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.SipParameters;
@@ -30,7 +34,7 @@ public class ProvisioningImpl implements ProvisioningService {
 	}
 
 	@Override
-	public void installConfigurationFiles(SipPhone phone, SipRegistrar registrar) {
+	public void installConfigurationFiles(SipPhone phone, SipRegistrar registrar) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException {
 		
 		List<ElementGenerator> elementGenerators = new ArrayList<ElementGenerator>();
 

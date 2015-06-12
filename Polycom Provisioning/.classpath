@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="main/java/|test/java/" kind="src" path="src"/>
+	<classpathentry excluding="main/java/|test/java/|main/resources/" kind="src" path="src"/>
+	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -16,6 +17,7 @@
 	<classpathentry kind="lib" path="C:/Users/Ian/technology/spring/3.2.5/spring-context-support-3.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Ian/technology/jars/log4j-1.2.14.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Ian/technology/jars/commons-logging-1.1.1.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/voxworx-lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="src" path="/voxworx-utils"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

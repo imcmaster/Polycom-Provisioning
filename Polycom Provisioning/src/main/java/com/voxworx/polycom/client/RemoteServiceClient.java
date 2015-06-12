@@ -1,5 +1,9 @@
 package com.voxworx.polycom.client;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+
 import com.voxworx.polycom.LocalContact;
 import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.SipRegistrar;
@@ -31,7 +35,13 @@ public class RemoteServiceClient {
 		SipRegistrar registrar = new SipRegistrar();
 		registrar.setIpAddress(host);
 		registrar.setPort("5060");
-		s.installConfigurationFiles(sipPhone, registrar);
+		try {
+			s.installConfigurationFiles(sipPhone, registrar);
+		} catch (ParserConfigurationException
+				| TransformerFactoryConfigurationError | TransformerException e) {
+			System.err.println("Error creating config files");
+			e.printStackTrace();
+		}
 		
 		System.out.println("Complete");
 	}

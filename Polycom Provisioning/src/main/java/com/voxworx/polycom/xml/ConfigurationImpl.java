@@ -18,11 +18,10 @@ import com.voxworx.utils.XmlUtils;
 public class ConfigurationImpl implements ConfigurationGenerator {
 
 	@Override
-	public void generateMasterConfiguration(SipPhone phone) {
+	public void generateMasterConfiguration(SipPhone phone) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException {
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
-		try {
 		
 			db = dbf.newDocumentBuilder();
 			Document dom = db.newDocument();
@@ -36,16 +35,6 @@ public class ConfigurationImpl implements ConfigurationGenerator {
 			
 			XmlUtils.generateFileResult(dom, buildAbsoluteFileName(generateMasterFileName(phone)), true);
 			
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TransformerFactoryConfigurationError e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 	}
 
@@ -60,38 +49,25 @@ public class ConfigurationImpl implements ConfigurationGenerator {
 	}
 
 	@Override
-	public void generatePhoneConfiguration(List<ElementGenerator> elementGenerators, SipPhone phone) {
+	public void generatePhoneConfiguration(List<ElementGenerator> elementGenerators, SipPhone phone) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException {
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
-		try {
 		
-			db = dbf.newDocumentBuilder();
-			Document dom = db.newDocument();
-			dom.setXmlStandalone(true);
-			
-			Element root = dom.createElement("polycomConfig");
-			root.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-			root.setAttribute("xsi:noNamespaceSchemaLocation", "polycomConfig.xsd");
-			dom.appendChild(root);
+		db = dbf.newDocumentBuilder();
+		Document dom = db.newDocument();
+		dom.setXmlStandalone(true);
+		
+		Element root = dom.createElement("polycomConfig");
+		root.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+		root.setAttribute("xsi:noNamespaceSchemaLocation", "polycomConfig.xsd");
+		dom.appendChild(root);
 
-			for (ElementGenerator elementGenerator : elementGenerators) {
-				root.appendChild(elementGenerator.generateElement(dom));
-			}
-			
-			XmlUtils.generateFileResult(dom, buildAbsoluteFileName(generatePhoneFileName(phone)), true);
-			
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TransformerFactoryConfigurationError e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for (ElementGenerator elementGenerator : elementGenerators) {
+			root.appendChild(elementGenerator.generateElement(dom));
 		}
-
+		
+		XmlUtils.generateFileResult(dom, buildAbsoluteFileName(generatePhoneFileName(phone)), true);
 	
 	}
 
@@ -106,73 +82,61 @@ public class ConfigurationImpl implements ConfigurationGenerator {
 		
 	}
 
-
 	@Override
-	public void generateLocalContactConfiguration(SipPhone phone) {
+	public void generateLocalContactConfiguration(SipPhone phone) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException {
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
-		try {
 		
-			db = dbf.newDocumentBuilder();
-			Document dom = db.newDocument();
-			dom.setXmlStandalone(true);
-			
-			Element dir = dom.createElement("directory");
-			dom.appendChild(dir);
-			
-			Element itemList = dom.createElement("item_list");
-			dir.appendChild(itemList);
-			
-			int speedDialIndex = 1;
-			for (LocalContact contact : phone.getLocalContacts()) {
-				
-				Element itemTag = dom.createElement("item");
-				itemList.appendChild(itemTag);
-				
-				Element label = dom.createElement("lb");
-				label.setTextContent(contact.getLabel());
-				itemTag.appendChild(label);
-				
-				Element lastName = dom.createElement("ln");
-				lastName.setTextContent(contact.getLastName());
-				itemTag.appendChild(lastName);
-				
-				Element firstName = dom.createElement("fn");
-				firstName.setTextContent(contact.getFirstName());
-				itemTag.appendChild(firstName);
-				
-				Element contactTag = dom.createElement("ct");
-				contactTag.setTextContent(contact.getContact());
-				itemTag.appendChild(contactTag);
-				
-				Element ringTone = dom.createElement("rt");
-				ringTone.setTextContent(Integer.valueOf(contact.getRingTone().getRingToneIndex()).toString());
-				itemTag.appendChild(ringTone);
-				
-				Element speedDial = dom.createElement("sd");
-				speedDial.setTextContent(Integer.valueOf(speedDialIndex).toString());
-				itemTag.appendChild(speedDial);
-				
-				Element buddyWatch = dom.createElement("bw");
-				buddyWatch.setTextContent(contact.isPresence() ? "1" : "0");
-				itemTag.appendChild(buddyWatch);
-				
-				speedDialIndex++;
-			}
+		db = dbf.newDocumentBuilder();
+		Document dom = db.newDocument();
+		dom.setXmlStandalone(true);
 		
-			XmlUtils.generateFileResult(dom, buildAbsoluteFileName(generateLocalContactFileName(phone)), true);
+		Element dir = dom.createElement("directory");
+		dom.appendChild(dir);
+		
+		Element itemList = dom.createElement("item_list");
+		dir.appendChild(itemList);
+		
+		int speedDialIndex = 1;
+		for (LocalContact contact : phone.getLocalContacts()) {
 			
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TransformerFactoryConfigurationError e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Element itemTag = dom.createElement("item");
+			itemList.appendChild(itemTag);
+			
+			Element label = dom.createElement("lb");
+			label.setTextContent(contact.getLabel());
+			itemTag.appendChild(label);
+			
+			Element lastName = dom.createElement("ln");
+			lastName.setTextContent(contact.getLastName());
+			itemTag.appendChild(lastName);
+			
+			Element firstName = dom.createElement("fn");
+			firstName.setTextContent(contact.getFirstName());
+			itemTag.appendChild(firstName);
+			
+			Element contactTag = dom.createElement("ct");
+			contactTag.setTextContent(contact.getContact());
+			itemTag.appendChild(contactTag);
+			
+			Element ringTone = dom.createElement("rt");
+			ringTone.setTextContent(Integer.valueOf(contact.getRingTone().getRingToneIndex()).toString());
+			itemTag.appendChild(ringTone);
+			
+			Element speedDial = dom.createElement("sd");
+			speedDial.setTextContent(Integer.valueOf(speedDialIndex).toString());
+			itemTag.appendChild(speedDial);
+			
+			Element buddyWatch = dom.createElement("bw");
+			buddyWatch.setTextContent(contact.isPresence() ? "1" : "0");
+			itemTag.appendChild(buddyWatch);
+			
+			speedDialIndex++;
 		}
+	
+		XmlUtils.generateFileResult(dom, buildAbsoluteFileName(generateLocalContactFileName(phone)), true);
+			
 		
 	}
 

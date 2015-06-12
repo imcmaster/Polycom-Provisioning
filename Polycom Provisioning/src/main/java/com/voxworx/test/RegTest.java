@@ -3,6 +3,10 @@ package com.voxworx.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+
 import com.voxworx.polycom.SipRegistrar;
 import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.polycom.xml.ElementGenerator;
@@ -12,7 +16,7 @@ import com.voxworx.polycom.xml.RegElementGenerator;
 
 public class RegTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException {
 
 		SipPhone phone = new SipPhone();
 		phone.setUserId("1001");
