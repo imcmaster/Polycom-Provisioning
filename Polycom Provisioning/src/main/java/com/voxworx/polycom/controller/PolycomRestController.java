@@ -26,7 +26,7 @@ public class PolycomRestController {
 	@RequestMapping(value="/polycom/phones", method = RequestMethod.GET)
 	@ResponseBody
 	public List<SipPhone> getSipPhone() {
-		logger.info("REST GET request for phones");
+		logger.info("REST GET request for phones2");
 		return phoneDAO.findAll();
 	}
 	 
