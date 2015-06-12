@@ -40,4 +40,9 @@ public class HibernatePhoneDAOImpl implements PhoneDAO {
 		return result.size() > 0 ? result.get(0) : null;
 	}
 
+	@Override
+	public SipPhone findById(int id) {
+		return hibernateTemplate.get(SipPhone.class, id);
+	}
+
 }

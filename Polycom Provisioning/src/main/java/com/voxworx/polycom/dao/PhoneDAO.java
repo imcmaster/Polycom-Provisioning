@@ -12,4 +12,6 @@ public interface PhoneDAO {
 	public List<SipPhone> findAll();
 	public SipPhone findByExtension(String domain, String extension);
 	
+	public SipPhone findById(int id);
+	
 }
