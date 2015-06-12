@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+ 	<!--  REST Controllers for incoming POST/CALLBACK  
+ 		These are explicitly defined due to annotation-driven tag (which overrides these handlers -->
+ 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+	
+	<context:component-scan base-package="com.voxworx.polycom.controller"/>
+
+	<!-- The controllers are discovered by @Controller; so the injections must be auto-wired 
+		This tag will instantiate the auto wiring bean which detects @Autowired tags -->
+	<context:annotation-config/>
+
+	<!-- Auto discover controllers by @Controller -->
+	<mvc:annotation-driven/>
+        
+</beans>

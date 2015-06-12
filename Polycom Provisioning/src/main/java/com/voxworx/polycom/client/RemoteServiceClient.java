@@ -35,14 +35,18 @@ public class RemoteServiceClient {
 		SipRegistrar registrar = new SipRegistrar();
 		registrar.setIpAddress(host);
 		registrar.setPort("5060");
-		try {
-			s.installConfigurationFiles(sipPhone, registrar);
-		} catch (ParserConfigurationException
-				| TransformerFactoryConfigurationError | TransformerException e) {
-			System.err.println("Error creating config files");
-			e.printStackTrace();
-		}
-		
+			try {
+				s.installConfigurationFiles(sipPhone, registrar);
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerFactoryConfigurationError e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		System.out.println("Complete");
 	}
 
