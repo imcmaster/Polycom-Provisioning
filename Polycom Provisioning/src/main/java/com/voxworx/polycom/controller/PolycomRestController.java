@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.voxworx.polycom.dao.PhoneDAO;
 import com.voxworx.polycom.domain.SipPhone;
@@ -23,6 +24,7 @@ public class PolycomRestController {
 	}
 	
 	@RequestMapping(value="/polycom/phones", method = RequestMethod.GET)
+	@ResponseBody
 	public List<SipPhone> getSipPhone() {
 		logger.info("REST GET request for phones");
 		return phoneDAO.findAll();
