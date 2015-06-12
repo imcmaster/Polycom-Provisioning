@@ -20,6 +20,10 @@ public class RemoteDAOClient {
 		//client.addPhone(MockUtils.createSipPhone());
 		for (SipPhone p : client.findAll())
 			System.out.println("id="+p.getUserId());
+		
+		SipPhone p = client.findById(1);
+		System.out.println(p.getCallerIdName());
+		
 	}
 
 }

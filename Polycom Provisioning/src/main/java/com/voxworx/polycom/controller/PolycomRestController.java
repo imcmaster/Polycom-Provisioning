@@ -31,7 +31,7 @@ public class PolycomRestController {
 		return phoneDAO.findAll();
 	}
 
-	@RequestMapping(value="/polycom/phone" + "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/polycom/phone/{phoneId}", method = RequestMethod.GET)
 	@ResponseBody
 	public SipPhone getSipPhone(@PathVariable int phoneId) {
 		logger.info("REST GET request for phone id="+phoneId);
