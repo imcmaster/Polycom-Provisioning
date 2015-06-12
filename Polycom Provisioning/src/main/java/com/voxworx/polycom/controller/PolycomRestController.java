@@ -12,9 +12,9 @@ import com.voxworx.polycom.dao.PhoneDAO;
 import com.voxworx.polycom.domain.SipPhone;
 
 @Controller
-public class RestController {
+public class PolycomRestController {
 
-	private static final Logger logger = Logger.getLogger(RestController.class);
+	private static final Logger logger = Logger.getLogger(PolycomRestController.class);
 	
 	private PhoneDAO phoneDAO;
 	@Autowired
