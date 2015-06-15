@@ -22,6 +22,9 @@ public class RemoteDAOClient {
 			System.out.println("id="+p.getUserId());
 		
 		SipPhone p = client.findById(1);
+		p.setPassword("test1");
+		p.setNumberLineKeys(3);
+		client.addPhone(p);
 		System.out.println(p.getCallerIdName());
 		
 	}

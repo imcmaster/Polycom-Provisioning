@@ -47,7 +47,7 @@ public class PolycomRestController {
 		return phoneDAO.findById(phoneId);
 	}
 	
-	@RequestMapping(value="/polycom/phone/{phoneId}", method = RequestMethod.PUT)
+	@RequestMapping(value="/polycom/phone/{phoneId}", method = RequestMethod.POST)
 	public ResponseEntity<?> updateSipPhone(@PathVariable int phoneId, HttpServletRequest req) {
 		logger.info("REST PUT request for phone id="+phoneId);
 		ObjectMapper mapper = new ObjectMapper();
