@@ -1,6 +1,7 @@
 package com.voxworx.polycom.controller;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,9 +47,9 @@ public class PolycomRestController {
 		return phoneDAO.findById(phoneId);
 	}
 	
-	@RequestMapping(value="/polycom/phone/{phoneId}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateSipPhone(@PathVariable int phoneId, HttpServletRequest req) {
-		logger.info("REST PUT request for phone id="+phoneId);
+	@RequestMapping(value="/polycom/phone", method = RequestMethod.POST)
+	public ResponseEntity<?> updateSipPhone(HttpServletRequest req) {
+		logger.info("REST POST request for phone");
 		ObjectMapper mapper = new ObjectMapper();
 		SipPhone phone = null;
 		try {
@@ -62,9 +63,7 @@ public class PolycomRestController {
 		phoneDAO.addPhone(phone);
 		// Response code DEPENDS on success of DAO action!
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/phones/")
-				.buildAndExpand(phoneId).toUri());
+        headers.setLocation(URI.create("Test"));
         return new ResponseEntity<String>(null, headers, HttpStatus.CREATED);
 
 	}
