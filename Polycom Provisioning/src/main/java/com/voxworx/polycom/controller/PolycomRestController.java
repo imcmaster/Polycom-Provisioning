@@ -51,18 +51,20 @@ public class PolycomRestController {
 	public ResponseEntity<?> updateSipPhone(@PathVariable int phoneId, HttpServletRequest req) {
 		logger.info("REST PUT request for phone id="+phoneId);
 		ObjectMapper mapper = new ObjectMapper();
-		String body = null;
-		SipPhone phone = null;
+		List<SipPhone> phones = null;
 		try {
-			body = req.getReader().readLine();
-			phone = mapper.readValue(body, SipPhone.class);
+			//body = req.getReader().readLine();
+			//phones = mapper.readValue(body, SipPhone.class);
+			phones = mapper.readValue(req.getReader().readLine(), mapper.getTypeFactory().constructCollectionType(List.class, SipPhone.class));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//TODO:  USE DAO to update the record
-		logger.info("got phone="+phone);
-		phoneDAO.addPhone(phone);
+		for (SipPhone phone : phones) {
+			logger.info("got phone="+phone);
+			phoneDAO.addPhone(phone);
+		}
 		// Response code DEPENDS on success of DAO action!
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ServletUriComponentsBuilder
