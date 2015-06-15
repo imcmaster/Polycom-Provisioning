@@ -19,5 +19,9 @@
 	<classpathentry kind="lib" path="C:/Users/Ian/technology/jars/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" path="/voxworx-utils"/>
+	<classpathentry kind="lib" path="C:/Users/Ian/technology/jackson/jackson-databind-2.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ian/technology/jars/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ian/technology/jackson/jackson-annotations-2.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ian/technology/jackson/jackson-core-2.2.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
