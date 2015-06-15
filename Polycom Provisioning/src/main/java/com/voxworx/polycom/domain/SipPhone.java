@@ -144,5 +144,10 @@ public class SipPhone implements Serializable {
 	public void setLocalContacts(List<LocalContact> localContacts) {
 		this.localContacts = localContacts;
 	}
+	
+	@Override
+	public String toString() {
+		return "id="+id+"; userId="+userId+"@"+domain;
+	}
 
 }

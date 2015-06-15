@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.voxworx.polycom.dao.PhoneDAO;
@@ -51,18 +52,22 @@ public class PolycomRestController {
 		logger.info("REST PUT request for phone id="+phoneId);
 		ObjectMapper mapper = new ObjectMapper();
 		String body = null;
+		SipPhone phone = null;
 		try {
 			body = req.getReader().readLine();
-			SipPhone phone = mapper.readValue(body, SipPhone.class);
-			logger.info("got phone="+phone);
+			phone = mapper.readValue(body, SipPhone.class);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//TODO:  USE DAO to update the record
+		logger.info("got phone="+phone);
+		phoneDAO.addPhone(phone);
 		// Response code DEPENDS on success of DAO action!
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create("test"));
+        headers.setLocation(ServletUriComponentsBuilder
+				.fromCurrentRequest().path("/phones/")
+				.buildAndExpand(phoneId).toUri());
         return new ResponseEntity<String>(null, headers, HttpStatus.CREATED);
 
 	}
