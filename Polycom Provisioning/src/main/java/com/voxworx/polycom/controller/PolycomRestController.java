@@ -1,7 +1,6 @@
 package com.voxworx.polycom.controller;
 
 import java.io.IOException;
-import java.net.URI;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,9 +46,32 @@ public class PolycomRestController {
 		return phoneDAO.findById(phoneId);
 	}
 	
-	@RequestMapping(value="/polycom/phone/{phoneId}", method = RequestMethod.POST)
+	@RequestMapping(value="/polycom/phone/{phoneId}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateSipPhone(@PathVariable int phoneId, HttpServletRequest req) {
 		logger.info("REST PUT request for phone id="+phoneId);
+		ObjectMapper mapper = new ObjectMapper();
+		SipPhone phone = null;
+		try {
+			phone = mapper.readValue(req.getReader().readLine(), SipPhone.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		logger.info("got phone="+phone);
+		phoneDAO.addPhone(phone);
+		// Response code DEPENDS on success of DAO action!
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ServletUriComponentsBuilder
+				.fromCurrentRequest().path("/phones/")
+				.buildAndExpand(phoneId).toUri());
+        return new ResponseEntity<String>(null, headers, HttpStatus.CREATED);
+
+	}
+	
+	@RequestMapping(value="/polycom/phones", method = RequestMethod.POST)
+	public ResponseEntity<?> updateSipPhones(HttpServletRequest req) {
+		logger.info("REST POST request for phones");
 		ObjectMapper mapper = new ObjectMapper();
 		List<SipPhone> phones = null;
 		try {
@@ -67,12 +89,8 @@ public class PolycomRestController {
 		}
 		// Response code DEPENDS on success of DAO action!
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/phones/")
-				.buildAndExpand(phoneId).toUri());
         return new ResponseEntity<String>(null, headers, HttpStatus.CREATED);
 
 	}
 	
-	 
 }
