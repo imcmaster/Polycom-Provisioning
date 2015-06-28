@@ -3,6 +3,7 @@ package com.voxworx.polycom.util;
 import java.util.List;
 
 import com.voxworx.polycom.CustomSoftKey;
+import com.voxworx.polycom.NatParameters;
 import com.voxworx.polycom.RingClass;
 import com.voxworx.polycom.RingClassParameters;
 import com.voxworx.polycom.RingTone;
@@ -70,6 +71,24 @@ public class PolycomUtils {
 		RingClassParameters rcp = new RingClassParameters(ringClass, name);
 		rcp.setRingTone(ringTone);
 		return rcp;
+	}
+	
+	/**
+	 * Creates the nat object needed to build the nat tag.
+	 * The defaults are:
+	 * keepalive = 30 seconds
+	 * sip port = 5060
+	 * rtp media port start = 10000
+	 * @param ip
+	 * @return
+	 */
+	public static NatParameters createDefaultNatParameters(String ip) {
+		NatParameters nat = new NatParameters();
+		nat.setIp(ip);
+		nat.setKeepAliveInterval(30);
+		nat.setRtpMediaPortStart(10000);
+		nat.setSipPort(5060);
+		return nat;
 	}
 	
 }

@@ -19,6 +19,7 @@ import com.voxworx.polycom.xml.DigitMapElementGenerator;
 import com.voxworx.polycom.xml.ElementGenerator;
 import com.voxworx.polycom.xml.FeatureElementGenerator;
 import com.voxworx.polycom.xml.MessageWaitingElementGenerator;
+import com.voxworx.polycom.xml.NatElementGenerator;
 import com.voxworx.polycom.xml.RegElementGenerator;
 import com.voxworx.polycom.xml.RingClassElementGenerator;
 import com.voxworx.polycom.xml.SipElementGenerator;
@@ -86,6 +87,10 @@ public class ProvisioningImpl implements ProvisioningService {
 
 		SipElementGenerator sipElementGenerator = new SipElementGenerator(sipParameters);
 		elementGenerators.add(sipElementGenerator);
+		
+		// 8.  NAT
+		NatElementGenerator natElementGenerator = new NatElementGenerator(PolycomUtils.createDefaultNatParameters("1.2.3.4"));
+		elementGenerators.add(natElementGenerator);
 		
 		/*
 		 * Final step - build the phone's configuration files

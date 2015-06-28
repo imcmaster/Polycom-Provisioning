@@ -16,12 +16,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.voxworx.polycom.dao.PhoneDAO;
 import com.voxworx.polycom.domain.SipPhone;
 
+/**
+ * This controller was set up as a test between Ian and Dave to test simple GET / POST 
+ * with JSON messages.
+ * It serves no real purpose at this time
+ * @author Ian
+ *
+ */
 @Controller
 public class PolycomRestController {
 
