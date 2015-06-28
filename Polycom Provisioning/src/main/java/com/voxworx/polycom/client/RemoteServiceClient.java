@@ -26,6 +26,7 @@ public class RemoteServiceClient {
 		PhoneDAO daoClient = SpringRemotingClient.getPolycomPhoneDAORemotingClient(host);
 
 		SipPhone sipPhone = daoClient.findByExtension(host, "101");
+		System.exit(0);
 
 		sipPhone.addLocalContact(createLocalContact("103"));
 		
