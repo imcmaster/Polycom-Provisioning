@@ -89,7 +89,7 @@ public class ProvisioningImpl implements ProvisioningService {
 		elementGenerators.add(sipElementGenerator);
 		
 		// 8.  NAT
-		NatElementGenerator natElementGenerator = new NatElementGenerator(PolycomUtils.createDefaultNatParameters("1.2.3.4"));
+		NatElementGenerator natElementGenerator = new NatElementGenerator(PolycomUtils.createDefaultNatParameters("70.49.151.241"));
 		elementGenerators.add(natElementGenerator);
 		
 		/*

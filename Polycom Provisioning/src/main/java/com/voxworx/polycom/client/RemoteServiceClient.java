@@ -15,6 +15,7 @@ import com.voxworx.utils.SpringRemotingClient;
 public class RemoteServiceClient {
 
 	private static final String host = "192.168.2.7";
+	private static final String colocation = "67.213.75.234";
 
 	public static void main(String[] args) {
 		new RemoteServiceClient().go();
@@ -26,7 +27,6 @@ public class RemoteServiceClient {
 		PhoneDAO daoClient = SpringRemotingClient.getPolycomPhoneDAORemotingClient(host);
 
 		SipPhone sipPhone = daoClient.findByExtension(host, "101");
-		System.exit(0);
 
 		sipPhone.addLocalContact(createLocalContact("103"));
 		
@@ -34,7 +34,7 @@ public class RemoteServiceClient {
 		System.out.println("LK="+sipPhone.getNumberLineKeys());
 
 		SipRegistrar registrar = new SipRegistrar();
-		registrar.setIpAddress(host);
+		registrar.setIpAddress(colocation);
 		registrar.setPort("5060");
 			try {
 				s.installConfigurationFiles(sipPhone, registrar);
