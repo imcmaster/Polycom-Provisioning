@@ -23,7 +23,7 @@ public class RemoteDAOClient {
 		
 		List<NatParameters> nps = client.findAllNatParameters();
 		System.out.println("Size="+nps.size());
-		System.exit(0);
+		//System.exit(0);
 		
 		//client.addPhone(MockUtils.createSipPhone());
 		for (SipPhone p : client.findAll())
@@ -32,8 +32,9 @@ public class RemoteDAOClient {
 		SipPhone p = client.findById(1);
 		p.setPassword("test1");
 		p.setNumberLineKeys(3);
-		client.addPhone(p);
+		//client.addPhone(p);
 		System.out.println(p.getCallerIdName());
+		System.out.println("contact size="+p.getLocalContacts().size());
 		
 	}
 

@@ -4,6 +4,19 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import com.voxworx.polycom.LocalContact;
 import com.voxworx.polycom.PhoneModel;
 import com.voxworx.polycom.RingTone;
@@ -13,29 +26,56 @@ import com.voxworx.polycom.RingTone;
  * @author Ian
  *
  */
+@Entity
+@Table(name = "sip_phone")
 public class SipPhone implements Serializable {
 	
 	private static final long serialVersionUID = -8355500931726150623L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;		// Auto-generating ID
+
+	@Column(name="user_id")
 	private String userId;			// Phone extension (also used for sip registration)
+	@Column(name="domain")
 	private String domain;			// Sip registration domain (i.e. userName@domain.com)
+	@Column(name="password")
 	private String password;		// Sip password
 
+	@Column(name="mac")
 	private String mac;				// MAC address
+	@Enumerated(EnumType.STRING)
+	@Column(name="model")
 	private PhoneModel model;		// i.e. 320, 321, 450, 550, etc
+	@Enumerated(EnumType.STRING)
+	@Column(name="ring_tone")
 	private RingTone ringTone;		// Default ring tone
+	@Column(name="no_line_keys")
 	private int numberLineKeys;		// Number of enabled 'Line' keys on the phone (subject to maximum based on phone model)
 
+	@Column(name="vm_password")
 	private String vmPassword;		// Voicemail password (for FS voicemail - ext 4000)
+	@Column(name="dial_plan_context")
 	private String dialPlanContext;	// the inbound dialplan context to find the extension / routing information
+	@Column(name="callerid_name")
 	private String callerIdName;	// Outbound calling; name presented
+	@Column(name="callerid_number")
 	private String callerIdNumber;	// Outbound calling; number presented
 	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="sip_phone_local_contacts",
+            joinColumns=
+            @JoinColumn(name="id", referencedColumnName="phone_id"),
+      inverseJoinColumns=
+            @JoinColumn(name="contact_id", referencedColumnName="local_contact_id"))
 	private List<LocalContact> localContacts;
 	
 	//Features
+	@Column(name="enable_park")
 	private boolean enablePark;		// Soft key park
+	@Column(name="enable_voicemail")
 	private boolean enableVoiceMail;	// Enable 'Messages' button, and MWI
 	
 	public int getId() {
