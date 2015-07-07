@@ -77,6 +77,8 @@ public class SipPhone implements Serializable {
 	private boolean enablePark;		// Soft key park
 	@Column(name="enable_voicemail")
 	private boolean enableVoiceMail;	// Enable 'Messages' button, and MWI
+	@Column(name="source_invite_only")
+	private boolean sourceInviteOnly;
 	
 	@ManyToOne(optional=true)
 	@JoinColumn(name="nat_id",referencedColumnName="id")
@@ -190,6 +192,17 @@ public class SipPhone implements Serializable {
 	}
 	public NatParameters getNatParameter() {
 		return natParameter;
+	}
+	public boolean isSourceInviteOnly() {
+		return sourceInviteOnly;
+	}
+	/**
+	 * Set to true to turn on the requestValidation tag, which will cause the Polycom to reject any outside attempt to 
+	 * send an INVITE to the phone.  This is especially needed when you are on the internet (i.e. NAT'ed with a public address)
+	 * @param sourceInviteOnly
+	 */
+	public void setSourceInviteOnly(boolean sourceInviteOnly) {
+		this.sourceInviteOnly = sourceInviteOnly;
 	}
 	public void setNatParameter(NatParameters natParameter) {
 		this.natParameter = natParameter;

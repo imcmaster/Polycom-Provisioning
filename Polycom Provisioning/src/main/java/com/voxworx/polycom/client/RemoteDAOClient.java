@@ -7,6 +7,7 @@ import com.voxworx.polycom.dao.PhoneDAO;
 import com.voxworx.polycom.domain.LocalContact;
 import com.voxworx.polycom.domain.NatParameters;
 import com.voxworx.polycom.domain.SipPhone;
+import com.voxworx.polycom.util.PolycomUtils;
 import com.voxworx.utils.MockUtils;
 import com.voxworx.utils.SpringRemotingClient;
 
@@ -31,17 +32,17 @@ public class RemoteDAOClient {
 		for (SipPhone p : client.findAll())
 			System.out.println("id="+p.getUserId());
 		
-		SipPhone p = client.findById(1);
-		p.setPassword("test1");
-		p.setNumberLineKeys(3);
-		//client.addPhone(p);
+		SipPhone p = client.findById(2);
 		System.out.println(p.getCallerIdName());
 		System.out.println("contact size="+p.getLocalContacts().size());
 		
 		LocalContact lc = client.findLocalContactByContactName("103");
+		p.addLocalContact(lc);
 		System.out.println("lc="+lc);
 		
-		p.addLocalContact(lc);
+		NatParameters np = client.findNatParametersByIp("70.49.151.241");
+		p.setNatParameter(np);
+		p.setSourceInviteOnly(true);
 		client.addPhone(p);
 		
 	}
