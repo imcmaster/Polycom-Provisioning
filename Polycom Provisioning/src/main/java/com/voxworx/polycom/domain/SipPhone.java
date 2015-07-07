@@ -17,7 +17,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.voxworx.polycom.LocalContact;
 import com.voxworx.polycom.PhoneModel;
 import com.voxworx.polycom.RingTone;
 

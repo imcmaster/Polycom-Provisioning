@@ -11,7 +11,7 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.voxworx.polycom.LocalContact;
+import com.voxworx.polycom.domain.LocalContact;
 import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.utils.XmlUtils;
 

@@ -4,10 +4,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
-import com.voxworx.polycom.LocalContact;
 import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.SipRegistrar;
 import com.voxworx.polycom.dao.PhoneDAO;
+import com.voxworx.polycom.domain.LocalContact;
 import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.polycom.service.ProvisioningService;
 import com.voxworx.utils.SpringRemotingClient;
