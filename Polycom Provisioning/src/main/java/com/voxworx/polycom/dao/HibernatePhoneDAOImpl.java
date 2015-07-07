@@ -88,4 +88,16 @@ public class HibernatePhoneDAOImpl implements PhoneDAO {
 		return hibernateTemplate.find("from LocalContact");
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public LocalContact findLocalContactByContactName(String contactName) {
+		List<LocalContact> contacts = hibernateTemplate.find("from LocalContact where name=?", contactName);
+		return contacts.size() > 0 ? contacts.get(0) : null;
+	}
+
+	@Override
+	public LocalContact findLocalContactById(int id) {
+		return hibernateTemplate.get(LocalContact.class, id);
+	}
+
 }

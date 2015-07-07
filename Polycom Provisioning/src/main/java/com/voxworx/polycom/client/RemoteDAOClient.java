@@ -2,7 +2,9 @@ package com.voxworx.polycom.client;
 
 import java.util.List;
 
+import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.dao.PhoneDAO;
+import com.voxworx.polycom.domain.LocalContact;
 import com.voxworx.polycom.domain.NatParameters;
 import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.utils.MockUtils;
@@ -36,6 +38,15 @@ public class RemoteDAOClient {
 		System.out.println(p.getCallerIdName());
 		System.out.println("contact size="+p.getLocalContacts().size());
 		
+		client.addLocalContact(createLocalContact("103"));
+		
 	}
 
+	private LocalContact createLocalContact(String contactName) {
+		LocalContact contact = new LocalContact("103");
+		contact.setLabel("Pharmacy");
+		contact.setRingTone(RingTone.LowDoubleTrill);
+		contact.setPresence(false);
+		return contact;
+	}
 }

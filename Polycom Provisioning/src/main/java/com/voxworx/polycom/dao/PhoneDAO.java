@@ -21,5 +21,7 @@ public interface PhoneDAO {
 	public LocalContact addLocalContact(LocalContact localContact);
 	public void deleteLocalContact(LocalContact localContact);
 	public List<LocalContact> findAllLocalContacts();
+	public LocalContact findLocalContactByContactName(String contactName);
+	public LocalContact findLocalContactById(int id);
 	
 }

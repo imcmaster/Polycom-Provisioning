@@ -4,10 +4,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
-import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.SipRegistrar;
 import com.voxworx.polycom.dao.PhoneDAO;
-import com.voxworx.polycom.domain.LocalContact;
 import com.voxworx.polycom.domain.SipPhone;
 import com.voxworx.polycom.service.ProvisioningService;
 import com.voxworx.utils.SpringRemotingClient;
@@ -28,7 +26,6 @@ public class RemoteServiceClient {
 
 		SipPhone sipPhone = daoClient.findByExtension(host, "101");
 
-		sipPhone.addLocalContact(createLocalContact("103"));
 		sipPhone.setEnableVoiceMail(false);
 		
 		System.out.println("Model="+sipPhone.getModel());
@@ -53,12 +50,4 @@ public class RemoteServiceClient {
 		System.out.println("Complete");
 	}
 
-	private LocalContact createLocalContact(String contactName) {
-		LocalContact contact = new LocalContact("103");
-		contact.setLabel("Pharmacy");
-		contact.setRingTone(RingTone.LowDoubleTrill);
-		contact.setPresence(false);
-		return contact;
-	}
-	
 }
