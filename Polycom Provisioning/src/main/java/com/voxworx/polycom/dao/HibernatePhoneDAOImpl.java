@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
+import com.voxworx.polycom.domain.LocalContact;
 import com.voxworx.polycom.domain.NatParameters;
 import com.voxworx.polycom.domain.SipPhone;
 
@@ -50,6 +51,41 @@ public class HibernatePhoneDAOImpl implements PhoneDAO {
 	@Override
 	public List<NatParameters> findAllNatParameters() {
 		return hibernateTemplate.find("from NatParameters");
+	}
+
+	@Override
+	public NatParameters addNatParameter(NatParameters natParameter) {
+		if (natParameter.getId() > 0)
+			hibernateTemplate.merge(natParameter);
+		else
+			hibernateTemplate.saveOrUpdate(natParameter);
+
+		return natParameter;
+	}
+
+	@Override
+	public void deleteNatParameter(NatParameters natParameter) {
+		hibernateTemplate.delete(natParameter);
+	}
+
+	@Override
+	public LocalContact addLocalContact(LocalContact localContact) {
+		if (localContact.getId() > 0)
+			hibernateTemplate.merge(localContact);
+		else
+			hibernateTemplate.saveOrUpdate(localContact);
+		return localContact;
+	}
+
+	@Override
+	public void deleteLocalContact(LocalContact localContact) {
+		hibernateTemplate.delete(localContact);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LocalContact> findAllLocalContacts() {
+		return hibernateTemplate.find("from LocalContact");
 	}
 
 }

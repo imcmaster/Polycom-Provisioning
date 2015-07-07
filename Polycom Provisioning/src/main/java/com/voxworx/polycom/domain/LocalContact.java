@@ -48,6 +48,10 @@ public class LocalContact implements Serializable {
 		this.contact = contact;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
