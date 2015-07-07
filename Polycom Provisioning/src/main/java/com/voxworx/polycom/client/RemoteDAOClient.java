@@ -43,6 +43,7 @@ public class RemoteDAOClient {
 		NatParameters np = client.findNatParametersByIp("70.49.151.241");
 		p.setNatParameter(np);
 		p.setSourceInviteOnly(true);
+		System.out.println("InviteOnly="+p.isSourceInviteOnly());
 		client.addPhone(p);
 		
 	}

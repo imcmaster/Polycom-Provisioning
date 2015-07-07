@@ -12,7 +12,8 @@ public class SipParameters {
 
 
 	private final List<RingClass> alertInfoMappings = new ArrayList<RingClass>();
-
+	private boolean sourceInviteOnly = false;
+	
 	/**
 	 * If set, the voIpProt.SIP.requestValidation tag will be added, with a method=source, and request=INVITE
 	 * This will protect the phone from receiving INVITES from unauthorized sources (i.e. Internet robots).
@@ -32,6 +33,14 @@ public class SipParameters {
 	 */
 	public void addAlertInfoMapping(RingClass mappedRingClass) {
 		alertInfoMappings.add(mappedRingClass);
+	}
+
+	public boolean isSourceInviteOnly() {
+		return sourceInviteOnly;
+	}
+
+	public void setSourceInviteOnly(boolean sourceInviteOnly) {
+		this.sourceInviteOnly = sourceInviteOnly;
 	}
 	
 }

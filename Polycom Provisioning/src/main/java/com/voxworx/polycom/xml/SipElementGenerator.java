@@ -22,9 +22,11 @@ public class SipElementGenerator implements ElementGenerator {
 
 	@Override
 	public Element generateElement(Document dom) {
+		
 		Element voipTag = dom.createElement("voIpProt");
 		Element sipTag = dom.createElement("voIpProt.SIP");
 		voipTag.appendChild(sipTag);
+		
 		Element alertInfoTag = dom.createElement("voIpProt.SIP.alertInfo");
 		sipTag.appendChild(alertInfoTag);
 		int i = 1;
@@ -33,6 +35,14 @@ public class SipElementGenerator implements ElementGenerator {
 			alertInfoTag.setAttribute(buildAttributeName(i, "class"), ringClass.getRingClassName());
 			i++;
 		}
+		
+		if (sipParameters.isSourceInviteOnly()) {
+			Element requestValidationTag = dom.createElement("voIpProt.SIP.requestValidation");
+			sipTag.appendChild(requestValidationTag);
+			requestValidationTag.setAttribute("voIpProt.SIP.requestValidation.1.method", "source");
+			requestValidationTag.setAttribute("voIpProt.SIP.requestValidation.1.request", "INVITE");
+		}
+		
 		return voipTag;
 	}
 	

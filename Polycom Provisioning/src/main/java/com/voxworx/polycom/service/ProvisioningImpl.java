@@ -84,13 +84,15 @@ public class ProvisioningImpl implements ProvisioningService {
 		sipParameters.addAlertInfoMapping(RingClass.CUSTOM1);
 		sipParameters.addAlertInfoMapping(RingClass.AUTOANSWER);
 		sipParameters.addAlertInfoMapping(RingClass.RINGAUTOANSWER);
+		
+		sipParameters.setSourceInviteOnly(phone.isSourceInviteOnly());
 
 		SipElementGenerator sipElementGenerator = new SipElementGenerator(sipParameters);
 		elementGenerators.add(sipElementGenerator);
 		
 		// 8.  NAT
-		NatElementGenerator natElementGenerator = new NatElementGenerator(PolycomUtils.createDefaultNatParameters("70.49.151.241"));
-		elementGenerators.add(natElementGenerator);
+		if (phone.getNatParameter() != null)
+			elementGenerators.add(new NatElementGenerator(phone.getNatParameter()));
 		
 		/*
 		 * Final step - build the phone's configuration files
