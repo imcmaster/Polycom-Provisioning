@@ -1,5 +1,7 @@
 package com.voxworx.polycom.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +17,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="nat_parameters")
-public class NatParameters {
+public class NatParameters implements Serializable {
 
+	private static final long serialVersionUID = -8508867047117494495L;
 	private int id;
 	private String ip;
 	private int keepAliveInterval;
