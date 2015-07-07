@@ -17,6 +17,8 @@ public interface PhoneDAO {
 	public NatParameters addNatParameter(NatParameters natParameter);
 	public void deleteNatParameter(NatParameters natParameter);
 	public List<NatParameters> findAllNatParameters();
+	public NatParameters findNatParametersById(int id);
+	public NatParameters findNatParametersByIp(String ip);
 	
 	public LocalContact addLocalContact(LocalContact localContact);
 	public void deleteLocalContact(LocalContact localContact);

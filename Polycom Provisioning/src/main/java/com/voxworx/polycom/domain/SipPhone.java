@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.voxworx.polycom.PhoneModel;
@@ -76,6 +77,10 @@ public class SipPhone implements Serializable {
 	private boolean enablePark;		// Soft key park
 	@Column(name="enable_voicemail")
 	private boolean enableVoiceMail;	// Enable 'Messages' button, and MWI
+	
+	@ManyToOne(optional=true)
+	@JoinColumn(name="nat_id",referencedColumnName="id")
+	private NatParameters natParameter;
 	
 	public int getId() {
 		return id;
@@ -183,7 +188,13 @@ public class SipPhone implements Serializable {
 	public void setLocalContacts(List<LocalContact> localContacts) {
 		this.localContacts = localContacts;
 	}
-	
+	public NatParameters getNatParameter() {
+		return natParameter;
+	}
+	public void setNatParameter(NatParameters natParameter) {
+		this.natParameter = natParameter;
+	}
+
 	@Override
 	public String toString() {
 		return "id="+id+"; userId="+userId+"@"+domain;

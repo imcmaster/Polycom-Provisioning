@@ -41,6 +41,9 @@ public class RemoteDAOClient {
 		LocalContact lc = client.findLocalContactByContactName("103");
 		System.out.println("lc="+lc);
 		
+		p.addLocalContact(lc);
+		client.addPhone(p);
+		
 	}
 
 	private LocalContact createLocalContact(String contactName) {

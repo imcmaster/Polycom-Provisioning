@@ -100,4 +100,9 @@ public class LocalContact implements Serializable {
 		this.label = label;
 	}
 	
+	@Override
+	public String toString() {
+		return "id="+id+"; contact="+contact;
+	}
+	
 }

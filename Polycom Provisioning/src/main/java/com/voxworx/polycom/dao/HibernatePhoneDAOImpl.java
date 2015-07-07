@@ -100,4 +100,16 @@ public class HibernatePhoneDAOImpl implements PhoneDAO {
 		return hibernateTemplate.get(LocalContact.class, id);
 	}
 
+	@Override
+	public NatParameters findNatParametersById(int id) {
+		return hibernateTemplate.get(NatParameters.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public NatParameters findNatParametersByIp(String ip) {
+		List<NatParameters> nats = hibernateTemplate.find("from NatParameters where ip = ?", ip);
+		return nats.size() > 0 ? nats.get(0) : null;
+	}
+
 }
