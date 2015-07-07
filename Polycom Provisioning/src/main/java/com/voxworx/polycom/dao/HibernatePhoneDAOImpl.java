@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
+import com.voxworx.polycom.domain.NatParameters;
 import com.voxworx.polycom.domain.SipPhone;
 
 public class HibernatePhoneDAOImpl implements PhoneDAO {
@@ -43,6 +44,12 @@ public class HibernatePhoneDAOImpl implements PhoneDAO {
 	@Override
 	public SipPhone findById(int id) {
 		return hibernateTemplate.get(SipPhone.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NatParameters> findAllNatParameters() {
+		return hibernateTemplate.find("from NatParameters");
 	}
 
 }

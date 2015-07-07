@@ -3,7 +3,7 @@ package com.voxworx.polycom.xml;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.voxworx.polycom.NatParameters;
+import com.voxworx.polycom.domain.NatParameters;
 
 public class NatElementGenerator implements ElementGenerator {
 

@@ -12,6 +12,14 @@ public class SipParameters {
 
 
 	private final List<RingClass> alertInfoMappings = new ArrayList<RingClass>();
+
+	/**
+	 * If set, the voIpProt.SIP.requestValidation tag will be added, with a method=source, and request=INVITE
+	 * This will protect the phone from receiving INVITES from unauthorized sources (i.e. Internet robots).
+	 * The protection was required for a NAT phone, where the local router needed to add PORT FORWARDING
+	 * of sip:5060 directly to the IP address of the phone (leaving it wide open to an Internet INVITE)
+	 * @return true if a request validation tag will be generated, false otherwise
+	 */
 	public List<RingClass> getAlertInfoMappings() {
 		return alertInfoMappings;
 	}

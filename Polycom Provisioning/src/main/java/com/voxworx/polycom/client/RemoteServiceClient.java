@@ -29,6 +29,7 @@ public class RemoteServiceClient {
 		SipPhone sipPhone = daoClient.findByExtension(host, "101");
 
 		sipPhone.addLocalContact(createLocalContact("103"));
+		sipPhone.setEnableVoiceMail(false);
 		
 		System.out.println("Model="+sipPhone.getModel());
 		System.out.println("LK="+sipPhone.getNumberLineKeys());
@@ -36,6 +37,7 @@ public class RemoteServiceClient {
 		SipRegistrar registrar = new SipRegistrar();
 		registrar.setIpAddress(colocation);
 		registrar.setPort("5060");
+		
 			try {
 				s.installConfigurationFiles(sipPhone, registrar);
 			} catch (ParserConfigurationException e) {
@@ -55,7 +57,7 @@ public class RemoteServiceClient {
 		LocalContact contact = new LocalContact("103");
 		contact.setLabel("Pharmacy");
 		contact.setRingTone(RingTone.LowDoubleTrill);
-		contact.setPresence(true);
+		contact.setPresence(false);
 		return contact;
 	}
 	

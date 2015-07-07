@@ -3,12 +3,12 @@ package com.voxworx.polycom.util;
 import java.util.List;
 
 import com.voxworx.polycom.CustomSoftKey;
-import com.voxworx.polycom.NatParameters;
 import com.voxworx.polycom.RingClass;
 import com.voxworx.polycom.RingClassParameters;
 import com.voxworx.polycom.RingTone;
 import com.voxworx.polycom.domain.Digit;
 import com.voxworx.polycom.domain.DigitMap;
+import com.voxworx.polycom.domain.NatParameters;
 
 public class PolycomUtils {
 
