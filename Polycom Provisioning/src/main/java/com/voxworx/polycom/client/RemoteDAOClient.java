@@ -38,7 +38,8 @@ public class RemoteDAOClient {
 		System.out.println(p.getCallerIdName());
 		System.out.println("contact size="+p.getLocalContacts().size());
 		
-		client.addLocalContact(createLocalContact("103"));
+		LocalContact lc = client.findLocalContactByContactName("103");
+		System.out.println("lc="+lc);
 		
 	}
 

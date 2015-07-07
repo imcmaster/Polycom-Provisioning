@@ -91,7 +91,7 @@ public class HibernatePhoneDAOImpl implements PhoneDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public LocalContact findLocalContactByContactName(String contactName) {
-		List<LocalContact> contacts = hibernateTemplate.find("from LocalContact where name=?", contactName);
+		List<LocalContact> contacts = hibernateTemplate.find("from LocalContact where contact=?", contactName);
 		return contacts.size() > 0 ? contacts.get(0) : null;
 	}
 
