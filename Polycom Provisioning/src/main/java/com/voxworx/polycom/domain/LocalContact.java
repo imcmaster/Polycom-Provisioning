@@ -36,13 +36,17 @@ public class LocalContact implements Serializable {
 	@Column(name="label")	
 	private String label;
 	@Column(name="contact")	
-	private final String contact;	// sip id
+	private String contact;	// sip id
 	@Enumerated(EnumType.STRING)
 	@Column(name="ring_tone")	
 	private RingTone ringTone;
 	@Column(name="presence")	
 	private boolean presence;	// if true then SIP SUBSCRIBE / NOTIFY (presence) will be activated (buddy watch)
 	
+	public LocalContact() {
+		super();
+	}
+
 	public LocalContact(String contact) {
 		super();
 		this.contact = contact;
