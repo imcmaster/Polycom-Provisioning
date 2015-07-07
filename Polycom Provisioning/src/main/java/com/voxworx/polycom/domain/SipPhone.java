@@ -66,9 +66,9 @@ public class SipPhone implements Serializable {
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="sip_phone_local_contacts",
             joinColumns=
-            @JoinColumn(name="id", referencedColumnName="phone_id"),
+            @JoinColumn(name="phone_id", referencedColumnName="id"),
       inverseJoinColumns=
-            @JoinColumn(name="contact_id", referencedColumnName="local_contact_id"))
+            @JoinColumn(name="local_contact_id", referencedColumnName="contact_id"))
 	private List<LocalContact> localContacts;
 	
 	//Features
