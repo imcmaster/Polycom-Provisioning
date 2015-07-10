@@ -26,8 +26,6 @@ public class RemoteServiceClient {
 
 		SipPhone sipPhone = daoClient.findByExtension(host, "101");
 
-		sipPhone.setEnableVoiceMail(false);
-		
 		System.out.println("Model="+sipPhone.getModel());
 		System.out.println("LK="+sipPhone.getNumberLineKeys());
 

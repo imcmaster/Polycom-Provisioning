@@ -55,6 +55,8 @@ public class SipPhone implements Serializable {
 	@Column(name="no_line_keys")
 	private int numberLineKeys;		// Number of enabled 'Line' keys on the phone (subject to maximum based on phone model)
 
+	@Column(name="vm_account")
+	private String vmAccount;
 	@Column(name="vm_password")
 	private String vmPassword;		// Voicemail password (for FS voicemail - ext 4000)
 	@Column(name="dial_plan_context")
@@ -142,6 +144,12 @@ public class SipPhone implements Serializable {
 		localContacts.add(contact);
 	}
 	
+	public String getVmAccount() {
+		return vmAccount;
+	}
+	public void setVmAccount(String vmAccount) {
+		this.vmAccount = vmAccount;
+	}
 	public String getDomain() {
 		return domain;
 	}

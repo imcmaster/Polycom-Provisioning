@@ -8,6 +8,7 @@ import com.voxworx.polycom.domain.SipPhone;
 
 /**
  * Responsible for generating the reg tag
+ * TODO:  Ability to have multiple reg lines (.1, .2, etc)
  * @author Ian
  *
  */

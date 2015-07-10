@@ -8,7 +8,7 @@ import com.voxworx.polycom.SipParameters;
 
 /**
  * Generates the voIpProt tag 
- * (For now just the alertInfo tags)
+ * (For now just the alertInfo tags, and a limited usage of requestValidation to block INVITE attacks)
  * @author Ian
  *
  */
